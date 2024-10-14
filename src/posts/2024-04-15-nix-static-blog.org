@@ -1,0 +1,94 @@
+---
+title: Static blog on Nix
+description: frustration, confusion, resolution
+tags: nixos, nix, blog
+---
+#+AUTHOR: Shae Erisson
+#+DATE: 2024-04-15
+
+[[../images/brynslustafirA.png]]
+
+NixOS, yay! Nix causes me so frustration, and I'm so happy when it works!
+
+I've been idly fixing my NixOS server, and now it's all working. I can quickly and easily push up blog posts, w00t!
+
+* Build locally, deploy results
+
+One thing Nix does well is fetching an already finished result from a cache.
+
+I wanted to do something similar by locally building my static blog on my beefy laptop and then pushing only the result to my wimpy rented server.
+
+I already had a configuration.nix file describing everything on my virtual private server, and I wanted the root of my website to be described in another file.
+
+I ended up with this stanza:
+
+#+begin_src nix
+  virtualHosts = {
+    "scannedinavian.com" = {
+      enableACME = true;
+      forceSSL = true;
+      root = "${pkgs.callPackage ./shaesite.nix {} }/dist";
+    };
+  };
+#+end_src
+
+This is nifty because the result of the ~shaesite.nix~ is substituted in as the contents of the root directory of the webserver.
+
+The contents of shaesite.nix are:
+
+#+begin_src nix
+  { fetchFromGitHub}:
+  let
+    src = fetchFromGitHub {
+      owner = "shapr";
+      repo = "hakyll-nix-something";
+      rev = "e14b0c3bba59e33ca3157d0f460e1193f0886d9b";
+      sha256 = "13n6zzcgb51zx21vmlsm4s7jy6lf863zm08wdj3inffpfq3g75mp";
+      # date = "2024-04-15T14:59:06-04:00";
+   };
+    wrappedFlake = import "${src}";
+  in
+  wrappedFlake.outputs.packages.x86_64-linux.website
+#+end_src
+
+* How to deploy?
+
+This is how I deploy my blog: ~nixos-rebuild switch -I nixpkgs=/home/shae/build/nixpkgs -I nixos-config=./configuration.nix --target-host root@surtr.scannedinavian.com~
+
+That says the system configuration is in a file in this directory called ~./configuration.nix~ and the result will be pushed to ~root@surtr.scannedinavian.com~
+
+I'm explicitly pointing nixpkgs to a local checkout because this all worked great when I was running NixOS 22.11 locally and on the server, and it didn't work at all when I upgraded my laptop from NixOS 22.11 to NixOS 23.05.
+
+I finally figured out that this command looks in the environment for the value of nixpkgs, and I hadn't upgraded my server!
+
+Because this didn't match, nixos-rebuild tried to copy up so much stuff that my server ran out of disk space, it was a huge mess that took me days to track down.
+
+This got especially interesting because the symptom I saw was "can't deploy blog, server doesn't have enough space".
+
+My first thought was that I had somehow changed the build to include all of the build tools instead of only the result.
+
+This led to a fun digression into learning about [[https://github.com/utdemir/nix-tree][nix-tree]] for investigating dependencies in a closure, and also led me to getting help from [[https://mastodon.social/@puffnfresh][Brian McKenna]] on how to convert a system configuration into a result that can be inspected.
+
+I ended up checking out a local copy of nixpkgs 22.11 and explicitly pointing the build command to that nixpkgs.
+
+Pinning dependencies is exactly the use case for Nix flakes, and that's one of my next steps for improving this, switch to flakes!
+
+* I got stuck, why no updates?
+
+Last week I changed the value of the git hash in the  ~rev~ value but I didn't get a new result for my website, nothing was built. What was happening?
+
+Turns out I needed to change the sha256 value as well, otherwise nix assumes the hash matches the existing result and nothing is built.
+
+I swapped two of the characters in the sha256, started a rebuild, and nix would complain that the hash was wrong, and tell me the correct value. Then I would copy in the correct value.
+
+I kinda consider this a bug, I wish nix would keep track of the git hash and sha256 hash pair.
+
+* Update the hash in emacs
+I got tired of the extra steps and wanted to use John Wiegley's [[https://github.com/jwiegley/nix-update-el][nix-update.el]] to magically update the hash for me.
+After some confusion and debugging, I had to add ~nix-prefetch-git~ to my system packages, and move the point to *before* the fetchFromGitHub, then it worked!
+
+* Next?
+
+I don't like the extra steps of finding the git revision of my blog repository after making changes, maybe I'll move the whole thing into the same repo with the system configuration?
+
+Like I said before, I also want to move this to a flake.

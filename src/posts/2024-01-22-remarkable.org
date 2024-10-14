@@ -1,0 +1,55 @@
+---
+title: Remarkable 2 review
+description: good, bad, and expensive
+tags: eink tablet, pdf annotation,
+---
+#+AUTHOR: Shae Erisson
+#+DATE: 2024-01-22
+
+[[../images/angurgapi.png]]
+
+* Linux, sort of
+
+The Remarkable 2 is a Linux system, you can even ssh into it.
+
+But there's a big pile of closed source on top of the Linux OS.
+
+I was convinced to get the three USD per month sync plan, but I never got it working. You can run software that fakes the cloud endpoints so you can do local sync, but I haven't tried it.
+
+The hardware is *great* !
+
+The Remarkable 2 has the lowest latency drawing I've seen on any e-ink tablet.
+
+* Battery life, great!
+
+The battery life is excellent, I think I charge mine once every two weeks?
+
+The 8 gigabytes of onboard storage means I can copy over *all* my research papers, PhD theses, and fiction books.
+
+The interface is pretty much folders of PDFs, and that's fine for drawing, making notes on PDFs, and reading books and papers.
+
+The only way I could find to do a custom-ish interface was to generate a PDF calendar for each year.
+
+* Want to make your own Remarkable 2 software?
+
+There's a whole homebrew style scene, but it feels discouraged by the company who makes the Remarkable 2.
+
+There's the [[https://github.com/reHackable/awesome-reMarkable][awesome-reMarkable]] repository that lists a bunch of nifty projects, last I checked it was mostly for the Remarkable 1, maybe there's more now?
+
+There are still lots of new active nifty projects like this [[https://blog.owulveryck.info/2023/07/25/evolving-the-game-a-clientless-streaming-tool-for-remarkable-2.html][streaming tool]].
+
+On the one hand it's a low power Linux system so you get minimal busybox style tools when you ssh into the hardware.
+
+There are also [[https://remarkable.guide/devel/index.html][toolchains available]] to let you build software for the Remarkable 2, but I haven't tried them.
+
+* No distractions!
+
+On the other hand, it's *not* a ~real~ Linux system, it doesn't have a browser or any sort of chat app, so my focus isn't stolen while I'm reading a book or paper.
+
+* Accessories are pricey
+
+As for purchasing, I bought the folio and the pen that does erasing on the other end, and those were expensive. I wish I'd gotten just the hardware and an [[https://www.joshualowcock.com/guide/remarkable-2-compatible-pens-remarkable-marker-alternatives/][alternative pen]].
+
+This review was transcribed from a chat conversation, so not much structure, oh well.
+
+I'd like to do more with my Remarkable 2, if you know of cool things I'm missing tell me about it on [[https://recurse.social/@shapr][mastodon]]!

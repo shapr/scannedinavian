@@ -1,0 +1,30 @@
+---
+author: Jean-Paul Calderone
+desc: So You Hate Callbacks
+keywords: ''
+lang: en
+title: So You Hate Callbacks
+---
+A frequent complaint made about Twisted (often by people who either don't use Twisted or have stopped using Twisted, such is the strength of their disgust) is that it drags your program into a "callback hell" where you suffer eternal "code bloat".<br />
+<br />
+This is because many APIs provided by Twisted (or a library or application based on Twisted) return a Deferred instead of a result. &nbsp;Since Twisted is asynchronous, the API has to return before there is a result. &nbsp;Callbacks are added to these Deferreds in order to get the result when it eventually becomes available:<br />
+<br />
+&nbsp;&nbsp; &nbsp;agent = Agent(reactor)<br />
+&nbsp;&nbsp; &nbsp;responseDeferred = agent.request("GET", "http://twistedmatrix.com/")<br />
+&nbsp;&nbsp; &nbsp;def receivedResponse(response):<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;print 'The response code is:', response.code<br />
+&nbsp;&nbsp; &nbsp;responseDeferred.addCallback(receivedResponse)<br />
+<br />
+People often prefer the "more natural" style that results from using either threading, greenlets, or coroutines. &nbsp;These approaches have in common the fact that they allow code to be written the way programmers are first taught to write code:<br />
+<br />
+&nbsp;&nbsp; &nbsp;agent = ThreadingGreenletOrCoroutineAgent()<br />
+&nbsp;&nbsp; &nbsp;response = agent.request("GET", "http://twistedmatrix.com/")<br />
+&nbsp;&nbsp; &nbsp;print 'The response code is:', response.code<br />
+<br />
+Often the desire for this style of code drives people to abandon or avoid Twisted altogether. &nbsp;Unfortunately the Twisted documentation does very little to correct this misconception. &nbsp;However, fortunately it is a misconception.<br />
+<br />
+inlineCallbacks<br />
+<br />
+Threads / blockingCallFromThread<br />
+<br />
+coroutines / corotwine

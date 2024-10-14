@@ -1,0 +1,85 @@
+---
+title: My own system packages in NixOS
+description: frustration, confusion, resolution
+tags: nixos, nix, haskell
+---
+#+AUTHOR: Shae Erisson
+#+DATE: 2024-04-27
+
+[[../images/brynslustafirB.png]]
+
+I haven't blogged about my [[https://github.com/shapr/bloohm][cool command line tool]]  before, but [[https://mclare.blog/posts/adapting-a-bloom-filter-to-rust/][mclare has]]. The idea is to show the status of multiple processes at the same time, using a bloom filter for layout.
+
+It works great, but I want to make it a system wide package in NixOS.
+
+I've bounced off this several times before, let's see how it goes.
+
+* What is it?
+
+We have a Haskell command line program in a git repository.
+
+I figure we can start with one that already works, utdemir's [[https://github.com/utdemir/nix-tree][nix-tree]].
+
+Let's steal the flake.nix from nix-tree and drop it into the bloohm repo.
+
+* It doesn't build.
+
+#+begin_src fundamental
+  error: Package ‘serialport-0.5.5’ in /nix/store/2z3llj8h7kwc3s6xw49zpy5vvqqimyr3-source/pkgs/development/haskell-modules/hackage-packages.nix:267788 is marked as broken, refusing to evaluate.
+#+end_src
+
+It seems that the serialport library is marked as "broken" in the nix packages collection.
+
+How does that happen? How are Haskell libraries marked broken?
+
+* How / why are Haskell libraries marked broken?
+
+A short duck search later I find something on the NixOS discourse, [[https://discourse.nixos.org/t/working-with-haskell-broken-packages/30126][How to work with broken Haskell packages]].
+
+There's a link to the [[https://nixos.org/manual/nixpkgs/stable/#haskell-available-packages][Haskell section]] of the nix manual, and from there to the [[https://github.com/NixOS/nixpkgs/blob/haskell-updates/pkgs/development/haskell-modules/configuration-hackage2nix/broken.yaml][list of broken packages]].
+
+Searching inside that page for serialport turns up:
+
+#+begin_src yaml
+  - serialport # failure in job https://hydra.nixos.org/build/233201348 at 2023-09-02
+#+End_src
+
+As far as I can tell, the serialport library tests don't pass unless you have an arduino running the [[https://github.com/standardsemiconductor/serialport/blob/main/tests/haskell_serial_test/haskell_serial_test.ino][test code]] attached to a serial port. That's not gonna happen on a Nix builder, and I don't know how to fix that.
+
+* How can I use a library marked broken?
+I can ugly-hack my way around that by adding ~allowBroken = true~ which makes me sad.
+
+#+begin_src nix
+  pkgs = import nixpkgs {
+    inherit system;
+    overlays = [ overlay ];
+    config = { allowBroken = true; }; # THIS MAKES ME SAD
+  };
+#+end_src
+
+* How can I make that available in my configuration.nix?
+
+I know I need to use an overlay, but after reading about overlays and how to call them, I gave up and used ~nix profile install '.#'~ .
+
+This caused me a bit of extra excitement when I upgraded my package, I can't reinstall an already installed package.
+
+I got an error telling me to run this command:
+
+#+begin_src fundamental
+  nix profile remove git+file:///home/shae/build/bloohm#defaultPackage.x86_64-linux
+#+end_src
+
+but that failed, and I had to remove the nix store path directly:
+
+#+begin_src fundamental
+  > nix profile remove '/nix/store/74s361g85hxm4c1iw2bkvbprv6xvnjpc-bloohm-1.0.0.0'
+  removing 'git+file:///home/shae/build/bloohm#defaultPackage.x86_64-linux'
+#+end_src
+
+That's good enough for now, hopefully I'll learn enough about overlays to make this a system package.
+
+* What's the conclusion?
+
+I updated [[https://github.com/shapr/bloohm/blob/main/flake.nix][bloohm]] to use Nix Flakes, and I published a [[https://hackage.haskell.org/package/bloohm][new version]] to the official Haskell repository!
+
+And there's something wrong with the build *grumble* I'll get back to that later.
