@@ -5,13 +5,9 @@ tags: github, linux kernel, community health
 ---
 #+AUTHOR: Shae Erisson
 #+DATE: 2024-11-11
-=The github plugin my coworkers asked me not to write.=
-
 [[../images/holastafur.png]]
 
-This blog post was written together with [[https://mclare.blog][<mclare>]], who made coooool visualizations like this one!
-
-[[../images/truck-factor.png]]
+This blog post was written together with [[https://mclare.blog][<mclare>]], who made coooool visualizations like the picture at the end of the post!
 
 * What's a Bus Factor or Truck Factor?
 According to [[https://en.wikipedia.org/wiki/Bus_factor][wikipedia]]:
@@ -112,3 +108,6 @@ After mclare installed the plugin on her system, she got a truck factor of eight
 This is not an improvement.
 
 If you want more articles on this subject, send us a message!
+* Visualize!
+For more visualizations and nifty details, check out [[https://mclare.blog][mclare's blog]].
+[[../images/truck-factor.png]]
