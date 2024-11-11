@@ -11,9 +11,9 @@ This blog post was written together with [[https://mclare.blog][<mclare>]], who 
 
 * What's a Bus Factor or Truck Factor?
 According to [[https://en.wikipedia.org/wiki/Bus_factor][wikipedia]]:
-#+begin_src fundamental
-  The "bus factor" is the minimum number of team members that have to suddenly disappear from a project before the project stalls due to lack of knowledgeable or competent personnel.
-#+end_src
+#+BEGIN_QUOTE
+The "bus factor" is the minimum number of team members that have to suddenly disappear from a project before the project stalls due to lack of knowledgeable or competent personnel.
+#+END_QUOTE
 * Why?
 In 2015 or so, my employer had layoffs.
 One of them was the only contributor to part of the codebase that made money for our company.
@@ -23,12 +23,14 @@ I enjoy reading research papers, and found this [[http://aserg.labsoft.dcc.ufmg.
 I started writing the plugin, and talked five minutes on it at our Thursday afternoon lightning talks.
 My coworkers said it would immediately hit [[https://en.wikipedia.org/wiki/Goodhart%27s_law][Goodhart's Law]]. They saw this as a way for management to easily calculate who you *can* fire!
 * What?
+The original authors calculated how many people had to be hit by a bus for a bunch of popular GitHub projects to stall.
+This includes the Linux kernel among others. In the first preprint, they said 80 people would have to leave the project for Linux to stop.
+
 Last week I mentioned this blog post idea to mclare, and she said we should try to reproduce the results and see if the truck factor has improved in the past ten years.
 
-The original authors created a github repo, and the code still works!
-
+The authors' [[https://github.com/aserg-ufmg/Truck-Factor][github repo]] is available and still works!
 ** Are we able to reproduce the results?
-The Truck Factor research paper links to a github repository!
+The Truck Factor research paper links to a [[https://github.com/aserg-ufmg/Truck-Factor][github repository]]!
 The data from the paper is available as JSON!
 Their [[http://aserg.labsoft.dcc.ufmg.br/truckfactor/target.html][visualization]] is backed by a CSV we can scrape!
 
@@ -36,11 +38,12 @@ But, we don't know the *date* they pulled the data.
 
 The README instructions don't quite work, and we spent an hour figuring out how to execute the pieces.
 Fortunately, the issues on the github repository told us how to fix the problem. I wanted results, not an afternoon of debugging their use of awk in shell scripts.
-mclare got the list of github repos out of the first column of their CSV. We had fun learning about [[https://www.gnu.org/software/parallel/][gnu parallel]] to run a bunch of git clone commands at the same time.
+mclare got the list of github repos out of the first column of their CSV. We needed to clone them all!
+We had fun learning about [[https://www.gnu.org/software/parallel/][gnu parallel]] to run a bunch of git clone commands at the same time.
 *** Gnu Parallel
 Why does [[https://www.gnu.org/software/parallel/][gnu parallel]] use *all* the cores when we tell it to use only 8?
-We only saw eight ~git clone~ processes at a time, but a large number of `git index-pack` processes that maxed out all 32 cores on my laptop.
-I suspect it's because git's index-pack is a forked subprocess and allows parallel to start another git clone?
+We only saw eight ~git clone~ processes at a time, but a large number of ~git index-pack~ processes that maxed out all 32 cores on my laptop.
+I'm guessing git's index-pack is a forked subprocess and allows parallel to start another git clone?
 If you know the answer, send us a message!
 *** Ruby Gems in NixOS
 The Truck Factor code uses [[https://github.com/github-linguist/linguist][linguist]] to filter out files that are only documentation. Later in the paper the authors say that documentation is the best way to keep your project alive, so I'm not convinced that's good.
