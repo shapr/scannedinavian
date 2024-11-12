@@ -9,6 +9,8 @@ tags: github, linux kernel, community health
 
 This blog post was written together with [[https://mclare.blog][<mclare>]], who made coooool visualizations like the picture at the end of the post!
 
+Update: Here's [[https://mclare.blog/posts/the-bus-factor/][mclare's blog post]] about this, with visualizations!
+
 * What's a Bus Factor or Truck Factor?
 According to [[https://en.wikipedia.org/wiki/Bus_factor][wikipedia]]:
 #+BEGIN_QUOTE
