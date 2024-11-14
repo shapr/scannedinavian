@@ -1,0 +1,87 @@
+---
+title: How to run Haskell source files like shell scripts
+description: How do I run a Haskell source file like a shell script?
+tags: haskell, shell scripting
+---
+#+AUTHOR: Shae Erisson
+#+DATE: 2024-11-14
+[[../images/skelkunarstafur.png]]
+
+I have a Haskell source file, I want to set the executable bit and run it like a shell script.
+
+How to do that?
+
+* What's a Shebang?
+
+Wikipedia says it's these two characters: [[https://en.wikipedia.org/wiki/Shebang_%28Unix%29][#!]] and that's a vaguely tolerable answer.
+
+There's a link a bit further down the page to [[https://en.wikipedia.org/wiki/Interpreter_directive][interpreter directive]] and that's a much better answer in my opinion.
+
+If you've done anything with Linux, you've probably seen files that have a first line like this: ~#!/usr/bin/env bash~
+
+This sucked me into a [[https://en.wikipedia.org/wiki/Shebang_%28Unix%29#Version_8_improved_shell_scripts][wikipedia rabbit hole]], so I will not tell you whether the # character was a comment before #! was used for "run this file by handing it to this other program".
+
+Anyway, we use a shebang in the two scripts below to pass the Haskell source file to something that will compile and run it.
+
+* Show me the thing!
+
+As long as you have the GHC compiler installed, this is the easy way that doesn't let you specify package dependencies.
+
+#+begin_src haskell
+  #!/usr/bin/env runhaskell
+  main = print "Hello World!"
+#+end_src
+
+If you also have cabal installed, this way is nice because you can put package dependencies in the source file.
+
+#+begin_src haskell
+  #!/usr/bin/env cabal
+
+  {- cabal:
+  build-depends: base
+	      , hedgehog
+  -}
+  {-# LANGUAGE OverloadedStrings #-}
+
+  module Main where
+
+  import Hedgehog
+  import qualified Hedgehog.Gen as Gen
+  import qualified Hedgehog.Range as Range
+
+  prop_associative_float :: Property
+  prop_associative_float = property $ do
+    a <- forAll $ Gen.float (Range.linearFrac (-100) (100))
+    b <- forAll $ Gen.float (Range.linearFrac (-10000) (10000))
+    c <- forAll $ Gen.float (Range.linearFrac 5 1000000)
+    ((a * b) * c) === (a * (b * c))
+
+  prop_reflexive :: Property
+  prop_reflexive = property $ do
+    a <- forAll $ Gen.float (Range.linearFrac (-100) (100))
+    (a / 0) === (a / 0)
+
+  main = do
+    checkParallel $
+      Group
+	"Example"
+	[ ("prop_reflexive", prop_reflexive),
+	  ("prop_associative_float", prop_associative_float)
+	]
+#+end_src
+
+You can try this yourself by copying the Haskell program above into "Foo.hs" and running ~chmod u+x ./Foo.hs~ and then running "./Foo.hs".
+
+On my system, the very first run takes
+
+* Any warnings?
+
+I heard from [[https://fosstodon.org/@simonmic][Simon Michael]] that this can break if your installed GHC changes versions and the library no longer matches the API. That makes sense, but I hadn't thought about it.
+
+The hedgehog script above takes one minute forty seconds on first run! I don't know why it takes so much time. On later runs it's less than two seconds, but golly that first run is rough.
+
+Does anyone know how to speed this up?
+
+* postscript
+
+If you prefer using stack instead of cabal, that [[https://docs.haskellstack.org/en/stable/topics/scripts/][works too]].
