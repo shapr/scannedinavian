@@ -72,8 +72,6 @@ If you also have cabal installed, this way is nice because you can put package d
 
 You can try this yourself by copying the Haskell program above into "Foo.hs" and running ~chmod u+x ./Foo.hs~ and then running "./Foo.hs".
 
-On my system, the very first run takes
-
 * Any warnings?
 
 I heard from [[https://fosstodon.org/@simonmic][Simon Michael]] that this can break if your installed GHC changes versions and the library no longer matches the API. That makes sense, but I hadn't thought about it.
@@ -84,4 +82,4 @@ Does anyone know how to speed this up?
 
 * postscript
 
-If you prefer using stack instead of cabal, that [[https://docs.haskellstack.org/en/stable/topics/scripts/][works too]].
+If you prefer using stack instead of cabal, that [[https://docs.haskellstack.org/en/stable/topics/scripts/][works too]]. Here's [[https://github.com/simonmichael/hledger/blob/master/Shake.hs][an example]] from hledger, written by the above linked Simon Michael.
