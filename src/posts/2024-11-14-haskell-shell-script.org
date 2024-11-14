@@ -32,7 +32,7 @@ As long as you have the GHC compiler installed, this is the easy way that doesn'
   main = print "Hello World!"
 #+end_src
 
-If you also have cabal installed, this way is nice because you can put package dependencies in the source file.
+If you also have cabal installed, this way is nice because you can put package dependencies in the source file (and [[https://cabal.readthedocs.io/en/stable/cabal-commands.html#cabal-run][specify compiler version and more]]).
 
 #+begin_src haskell
   #!/usr/bin/env cabal
