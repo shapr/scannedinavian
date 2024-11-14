@@ -39,7 +39,7 @@ If you also have cabal installed, this way is nice because you can put package d
 
   {- cabal:
   build-depends: base
-	      , hedgehog
+		  , hedgehog
   -}
   {-# LANGUAGE OverloadedStrings #-}
 
@@ -63,11 +63,7 @@ If you also have cabal installed, this way is nice because you can put package d
 
   main = do
     checkParallel $
-      Group
-	"Example"
-	[ ("prop_reflexive", prop_reflexive),
-	  ("prop_associative_float", prop_associative_float)
-	]
+      Group "Example" [ ("prop_reflexive", prop_reflexive), ("prop_associative_float", prop_associative_float) ]
 #+end_src
 
 You can try this yourself by copying the Haskell program above into "Foo.hs" and running ~chmod u+x ./Foo.hs~ and then running "./Foo.hs".
