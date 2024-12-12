@@ -1,0 +1,139 @@
+---
+title: Programmers want flow: when programming, light turns RED
+description:
+tags: emacs, circuitpython, flow
+---
+#+AUTHOR: Shae Erisson
+#+DATE: 2024-12-12
+[[../images/rosahringurminni.png]]
+
+I read [[https://christop.club/publications/pdfs/Zuger-etal_2017.pdf][Reducing Interruptions at Work: A Large-Scale Field Study of FlowLight]] and built my own FlowLight.
+
+When I first heard about this paper from the second author, Chris Corley, he said something to the effect of "the easiest way to detect if a programmer is in flow is to see if they're typing into their programmer's editor."
+This is the approach I wanted to implement.
+
+[[../images/magtag-busy.png]]
+
+[[../images/magtag-free.jpg]]
+
+Go look at the [[https://github.com/shapr/flowlight/][elisp and circuitpython source code]]!
+
+* What's Flow?
+
+Wikipedia says Flow is also called *in the zone* or *locked in*. It's that time where you have enough of the system loaded into short term memory that you can smoothly and fluently do the thing!
+
+That same page has a section that mentions [[https://en.wikipedia.org/wiki/Flow_(psychology)#Characteristics][seven flow conditions]], one of which is "Freedom from distractions".
+
+Most programmers have other humans nearby, in the same physical space. They could be coworkers, children, or partners.
+
+If you are doing the thing, and someone bumps into you and asks if you want coffee, this can lead to an extra fifteen minutes spent reloading short term memory.
+
+Wouldn't it be nice if those other humans had a way to see if you were *not* at a good point for a distraction?
+
+* Implementation
+
+[[https://en.wikipedia.org/wiki/Emacs][Emacs]]! A
+[[https://www.adafruit.com/product/4800][MagTag]] board from AdaFruit,
+and its built-in [[https://www.adafruit.com/product/4801][NeoPixel Strip]]!
+
+How do I track activity?
+
+The original authors tracked keypresses and mouse clicks, but I want to do this entirely inside emacs.
+* Emacs idle timers?
+
+- The idle timer waits for ten seconds, then appends the pair of (now,seconds-of-idle-time) to a list.
+- The other timer runs every sixty seconds to calculate the status to send, and removes elements older than seven minutes.
+
+It works, but there's gotta be a better approach. This is newbie elisp code, I'd appreciate any suggestions or improvements.
+
+From reading the emacs documentation about idle timers, it says seconds-of-idle-time is ~nil~ if emacs isn't idle. I never got a ~nil~ value, so I think my computer is fast enough to run all the background tasks everytime I press a key?
+
+There's the usual start and stop boilerplate that you need for every emacs timer, and the core is:
+
+#+begin_src elisp
+  ;; will this break if I type fast enough for (current-idle-time) to return nil ?
+  (defun is-active (pair)
+    "Check PAIR, idle values less than 10 seconds counts as active. idle returns -1 and active returns 1."
+    (if (< (cdr pair) 10) 1 -1))
+
+  (defun flowlight-update-color ()
+    "Update the color. This is done by checking whether more than half of the samples from the last seven minutes have activity."
+    (interactive)
+    (progn
+      (flowlight-prune-activity-intervals) ;; remove old values
+      (if	;; if values are more active than inactive, set BUSY status
+	  (> (apply '+ (cl-mapcar 'is-active flowlight-activity-intervals)) 0)
+	  (url-retrieve "http://flowlight.local/status?status=busy" 'message)
+	(url-retrieve "http://flowlight.local/status?status=free" 'message))))
+
+  (defun flowlight-prune-activity-intervals ()
+    "Remove any samples older than seven minutes."
+    (interactive)
+    (let ((seven-minutes-before-now (- (time-convert nil 'integer) (* 60 7))))
+      (setq flowlight-activity-intervals
+	    (cl-remove-if (lambda (row) (> seven-minutes-before-now (car row))) flowlight-activity-intervals))))
+
+#+end_src
+
+* LEDs? CircuitPython?
+
+I like to buy AdaFruit hardware, and along the way I picked up a
+[[https://www.adafruit.com/product/4800][MagTag]] board.
+
+The MagTag board runs CircuitPython, and is one of the few that can run an HTTP server. I hooked a webserver endpoint to the LED colors and e-ink text.
+
+Bonus fun included adding support for multicast DNS:
+
+#+begin_src python
+  mdns_server = mdns.Server(wifi.radio)
+  mdns_server.hostname = "flowlight"
+  print("MDNS Hostname: " + mdns_server.hostname)
+  mdns_server.advertise_service(service_type="_http", protocol="_tcp", port=80)
+#+end_src
+
+The core of the code is an endpoint for *BUSY* or *FREE*:
+
+#+begin_src python
+  @server.route("/status", GET)
+  def set_status(request: Request):
+      """Changes the color of the built-in NeoPixels and the status text using query/GET params."""
+      # e.g. /status?status=busy or /status?status=free
+      status = request.query_params.get("status")
+      response = ""
+      if status == "busy":
+	  magtag.peripherals.neopixels.fill((255, 0, 0))
+	  magtag.set_text("BUSY")
+	  response = "busy"
+      elif status == "free":
+	  magtag.peripherals.neopixels.fill((0, 255, 0))
+	  magtag.set_text("FREE")
+	  response = "free"
+      else:
+	  magtag.peripherals.neopixels.fill((0, 0, 255))
+	  magtag.set_text("ERROR")
+	  response = "error"
+
+      return Response(request, f"Changed status to {response}")
+#+end_src
+
+* Improvements?
+
+- Using timers feels janky, maybe I should try what I did for [[https://github.com/shapr/markovkeyboard/][markovkeyboard]] and hook into every keypress? I'm not sure how to structure that efficiently.
+- I really wanted a [[https://en.wikipedia.org/wiki/Sparkline][sparkline]] of activity, but I don't have a board with a big display than can run an HTTP server.
+- I'd like to use the [[https://www.adafruit.com/product/5778][Matrix Portal S3]], as it can run an HTTP server and has a big display, but it's out of stock!
+- This code totally ignores the per-minute buckets and smoothing from the original paper, I'd like to go back and improve that.
+
+* Credits
+Most of the emacs timer stuff (and how to write elisp) came from discussions with [[https://reedmullanix.com/][Reed Mullanix]] and [[http://canonical.org/~kragen/][Kragen Sitaker]], thanks!
+My friend [[https://christop.club/][Chris Corley]] told me about the FlowLight paper right after it was written, hopefully this post lets me put stop thinking about it for awhile.
+
+* Notes
+
+I started out with AdaFruit's [[https://www.adafruit.com/product/4985][FunHouse Board]], but after throwing the board in my backpack without a case, something bad happened and that board has fatal issues getting data over USB.
+
+On the good side, my MagTag board already has a case with an attached battery, and its own set of magnet feet, so I can stick it on the wall for anyone to see.
+
+If you want to buy your own hardware to run this, there are a few suitable boards in stock at the time of publication.
+
+I'd suggest the [[https://www.adafruit.com/product/5420][Memento]] camera, or one of the AdaFruit Feather boards that appear when you click on the arrow to the left of "Available on these boards" section of
+the [[https://docs.circuitpython.org/en/latest/shared-bindings/socketpool/index.html][socketpool]] docs.
