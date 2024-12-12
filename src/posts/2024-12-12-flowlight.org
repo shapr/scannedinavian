@@ -1,5 +1,5 @@
 ---
-title: Programmers want flow: when programming, light turns RED
+title: Programmers want flow. when programming, light turns RED
 description:
 tags: emacs, circuitpython, flow
 ---
