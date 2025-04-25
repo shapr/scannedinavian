@@ -1,0 +1,34 @@
+---
+title: Do something, BRAG ABOUT IT
+description: write about your cool thing so I can find them
+tags: request
+---
+#+AUTHOR: Shae Erisson
+#+DATE: 2025-04-25
+* Find people that share your interests
+Computers exist to connect humans, your writings exist to help people find you.
+
+Advertise your awesome!
+
+* Share your knowledge to benefit others
+Everyone knows something I don't know, that will benefit me once I know it.
+
+I can find some of those things in your writing.
+* Give yourself jumping off points for the next cool thing
+When I write about my nifty projects, I include things I did not try but could be interesting.
+
+Many of my later fun projects come from me re-reading those "this might work?" points and deciding to try it.
+* Legacy
+[[https://press.stripe.com/the-art-of-doing-science-and-engineering][Hamming]] says roughly "You will be most remembered from your expository works".
+
+That is, the world will remember you by how you communicated with other humans.
+
+Expose the awesome things!
+* New to you, your local scope is the world that matters
+Write up something new to you or your group of people. Understanding flows unevenly, your explanation could be the thing that helps someone have that spark of realization.
+* Start with imperfection, just DO THE THING
+This blog post reads like a pale shadow of what's in my head, but it's here for you to read.
+
+I'm publishing it so you gain something from what I've written. Maybe I'll write something that communicates more effectively after I've had time to think about this one?
+* DO SOMETHING!
+* BRAG ABOUT IT!
