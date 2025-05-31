@@ -24,7 +24,9 @@ Github came up with [[https://en.wikipedia.org/wiki/Tree-sitter_(parser_generato
 
 At first I was excited, maybe tree sitter would be a good base for editor agnostic refactoring tools?
 
-I found [[https://github.com/tree-sitter/tree-sitter/issues/642][this issue]],
+I found [[https://github.com/tree-sitter/tree-sitter/issues/642][this issue]], which says roughly "no, you cannot make a refactoring browser with tree-sitter".
+
+Turns out, you can get pretty close though!
 * COOL TOOLS
 ** difftastic
 Honestly, [[https://github.com/Wilfred/difftastic?tab=readme-ov-file#basic-example][difftastic]] is just better than any diff program that does not use a syntax tree. The linked image doesn't do it justice if you haven't spent much time puzzling over a git diff. Install it now!
