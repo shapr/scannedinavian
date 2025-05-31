@@ -1,0 +1,67 @@
+---
+title: Buy a blog post
+description: bribe me plz, I will write cool things
+tags: blog, incentive, bribe
+---
+#+AUTHOR: Shae Erisson
+#+DATE: 2025-05-29
+* Get paid to do a thing?
+I just read this [[https://lobste.rs/s/vdzcfg/two_types_open_source#c_wuhgld][interesting comment]] about getting paid for open source.
+I had a [[https://hachyderm.io/@LGUG2Z/114586871580310822][short conversation]] with the author.
+
+That lead to this lovely bit of text:
+
+#+begin_src fundamental
+  When purchasing a license subscription, you are optionally encouraged
+  to enter your GitHub username; this makes it easier for me to identify
+  issues created by users with license subscriptions on the Komorebi
+  GitHub repo.
+#+end_src
+
+I like the incentive there, pay to get priority.
+
+So here's an experiment. I'll write a list of topics I've been meaning to turn into blog posts, and a price, and you, oh well-funded reader, can bribe me to finish them.
+
+What happens when the money arrives? I'll immediately dump a raw unedited blog post with the description and resources I've already collected, and then clean up the post.
+
+I reserve the right to change prices after writing any of these blog posts. As time passes I may grow more or less interested in a topic.
+* What topics?
+- [X] A survey of [[https://recurse.social/@shapr/114586871146886956][cool tools]] built on top of tree sitter's concrete syntax trees. ( $15 )
+- [ ] if your tests are hard to write, your API needs improvements, or test driven development is a great way to sanity check your APIs. ( $15 )
+- [ ] the state of affordable input devices for [[https://en.wikipedia.org/wiki/Pose_tracking][pose tracking]] (aka, what happened to the Microsoft Kinect?) ( $50 )
+  - [ ] how pose tracking turns sensor input into human body / hand positions ( $ 500 )
+    - [ ] pose tracking software for analyzing and teaching martial arts ( $50000 )
+- puzzles for learning
+  - [ ] [[https://en.wikipedia.org/wiki/A_Mathematician's_Lament][Lockhart's Lament]], or why you should keep a mental collection of small fun puzzles. ( $10 )
+  - [ ] Some of the fun mental [[https://github.com/shapr/ako-diagrams][puzzles]] I've discovered after reading Lockhart's Lament ( $30 )
+  - [ ] The beauty of [[https://arxiv.org/abs/2403.13855][Brayden Cassella's non-terminating beggar-my-neighbor]], how someone solved one of my collection of fun puzzles, and why it's now even more fun. ( $15 )
+- [ ] Why I believe all programmers should read [[https://press.stripe.com/the-art-of-doing-science-and-engineering][the Hamming book]], [[https://openlibrary.org/books/OL38791133M/Art_and_Fear][Art & Fear]], [[https://en.wikipedia.org/wiki/Structure_and_Interpretation_of_Computer_Programs][SICP]], and [[https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/][The Pragmatic Programmer]]. ( $25 )
+- [ ] How I did my taxes in emacs' org-mode spreadsheets ( $20 )
+  - [ ] what the accountant thought about me doing my taxes in emacs ( TBD )
+- [ ] A cost comparison of StarLink vs fiber links, where the cost is price per bit over the lifetime of both. ( $50 )
+- [ ] A summary of some papers on the effect of carbon dioxide levels on human cognition ( $35 )
+  - [ ] Is it possible our society has become stupider due to rising global levels of carbon dioxide? ( $30 )
+- [ ] conversations with correctness, why I believe incremental interactive 'proof assistant' tools such as GHCi, [[https://docs.idris-lang.org/en/latest/elaboratorReflection/elaborator-reflection.html][idris]], and [[https://github.com/shapr/hlsexamples/blob/main/src/Examples.hs#L117][wingman]] are superior to large language models for exploratory programming ( $40 )
+- [ ] An analysis of time to converge on maximum coverage for various property based testing frameworks in Haskell. ( $40 )
+  This is an extension of [[https://www.youtube.com/watch?v=JB7vl9KXqpw][my ICFP lightning talk]] and [[https://www.scannedinavian.com/run-property-tests-until-coverage-stops-increasing.html][earlier blog post]].
+- [ ] A description of "library sommeliers" that I pitched to the Haskell Foundation ( $25 )
+  - [ ] A prototype "library sommelier" template with working demos ( $75 )
+    - [ ] A language agnostic website for library sommeliers ( $75000 )
+- [ ] notes on a [[https://github.com/yetamrra/spc-compiler][working spoken programming language]] that uses Hindley-Milner type inference to decide what part of speech is being spoken now. ( $15 )
+- [ ] Can you discover an unknown element by predicting and analyzing emission spectra from distant stars? Notes from a discussion on the Recurse Center zulip. ( $30 )
+
+This is about a third of the full list, and includes posts I would immediately feel comfortable writing.
+* What if I want to bribe you to write about a topic that's not on the list?
+I will happily discuss suggestions, send me a message!
+* What if I want to pair with you on one of these?
+That'll get priority over anything else, I am most productive when working with someone else on a task.
+* What If I want credit for bribing you?
+Sure? I'm also fine if you want to be anonymous.
+* How do you calculate the price of each blog post?
+Mostly by how much I want to write each thing. Small price means I want to do it, and think it's easy enough.
+Ok, maybe I just made up all the prices anyway.
+* Is this for real?
+🤔
+This could also be an excuse to re-organize my scattered lists of ideas, and find people who want to collaborate.
+* Conclusion
+Post your own "blog post stub" list on your own blog, and SEND ME A LINK!

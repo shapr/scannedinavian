@@ -1,0 +1,62 @@
+---
+title: Tools built on tree-sitter's concrete syntax trees
+description: syntax tree for diff, merge, navigate, edit
+tags: tree-sitter, concrete syntax trees
+---
+#+AUTHOR: Shae Erisson
+#+DATE: 2025-05-31
+* What is this all about?
+Lots of surprisingly powerful tools have been built on top of tree sitter, and I just found out about them!
+
+I thought we'd need real AST tools, which tree sitter doesn't have. I was wrong, there's so much awesome!
+
+If you're not interested in the background, or you already know it, skip down to the tools section!
+* Refactoring and abstract syntax trees
+Decades ago I got excited about refactoring browsers and read all the research.
+A refactoring browser parses your source code to an [[https://en.wikipedia.org/wiki/Abstract_syntax_tree][abstract syntax tree]], modifies that structured representation, and then unparses back to source code.
+I figured all languages would have these amazingly powerful tools by 2010, but it hasn't happened.
+
+(Also, I can't find any good descriptions of the power of a refactoring browser on the internet, so that goes into my list of blog post ideas.)
+* concrete syntax trees?
+Microsoft came up with this cool idea, the [[https://en.wikipedia.org/wiki/Language_Server_Protocol][language server protocol]]. The idea is that each programming language can build their own tools for interactive use, and use a single API to hook them into any editor. LSP is [[https://www.michaelpj.com/blog/2024/09/03/lsp-good-bad-ugly.html][ok, I guess]].
+
+Github came up with [[https://en.wikipedia.org/wiki/Tree-sitter_(parser_generator)][tree sitter]], a parser generator. In my view it's another editor agnostic slice of the interactive software development experience, but for incremental parsing of source code.
+
+At first I was excited, maybe tree sitter would be a good base for editor agnostic refactoring tools?
+
+I found [[https://github.com/tree-sitter/tree-sitter/issues/642][this issue]],
+* COOL TOOLS
+** difftastic
+Honestly, [[https://github.com/Wilfred/difftastic?tab=readme-ov-file#basic-example][difftastic]] is just better than any diff program that does not use a syntax tree. The linked image doesn't do it justice if you haven't spent much time puzzling over a git diff. Install it now!
+
+If you use emacs and magit like I do, I recommend the [[https://github.com/pkryger/difftastic.el][difftastic.el]] library.
+
+After I linked difftastic, one of my friends immediately used difftastic to find a stealthy bug, five stars!
+** combobulate for emacs
+What if you want to navigate (and edit) your program via the parsed source code? Try [[https://www.masteringemacs.org/article/combobulate-structured-movement-editing-treesitter][combobulate]]! Like most of these tools, the description doesn't do it justice, you have to try it!
+
+Since it uses all the same emacs key bindings, my navigation was instantly improved.
+I'm still wrapping my head around the large amount of editing functionality, but being able to smoothly reorder definitions in a file is immediately useful to me.
+** cursorless for voice navigation
+I know two people who damaged their arms from too much code, and they've switched to using [[https://www.cursorless.org/docs/user/scope-visualizer/][cursorless]] so they can fluently (voice pun?) navigate source code.
+
+This yet another case where the description might not sound impressive, but after watching one friend use cursorless, I'm considering using this myself.
+** mergiraf
+So you tried difftastic and it was AMAZING, right?
+
+Wouldn't you like that same functionality to simplify complicated merges in git?
+
+You want [[https://mergiraf.org/][mergiraf]]! I haven't started using this yet, but if it's the same power increase I got from difftastic, it's gonna be great!
+** more links
+I ended up asking on mastodon if there were more cool tools in this area and got a list:
+- srgn ( surgeon ) - cli search and manipulate https://github.com/alexpovel/srgn?tab=readme-ov-file#multiple-scopes
+- ast-grep - lint https://ast-grep.github.io/
+- libCST ( python ) https://libcst.readthedocs.io/en/latest/motivation.html
+- gritQL interactive AST rewrite https://github.com/honeycombio/gritql
+- json path finder ( emacs ) https://eshelyaron.com/posts/2023-05-17-orientation-in-json-documents-with-emacs-and-tree-sitter.html
+** What about languages that don't exist yet?
+From what I've seen, all the above tools focus cool tricks with existing languages.
+
+I heard from [[https://types.pl/@bugarela][bugarela]] that [[https://topiary.tweag.io/book/index.html][Topiary]] uses tree sitter to make language formatters like rust-fmt or gofmt, but for your own custom language. (In this case, bugarela is the lead dev on [[https://quint-lang.org/][Quint]], an updated take on TLA+)
+** What did I miss?
+If you know of a cool tree sitter related tool that I didn't mention, or especially if you know of research papers comparing the expressive power of ASTs and CSTs, I want to hear about it!
