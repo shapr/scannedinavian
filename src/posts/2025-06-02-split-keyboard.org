@@ -1,0 +1,75 @@
+---
+title: Split keyboard tips
+description: You just switched to a split keyboard, now what?
+tags: request, keyboard, bribe
+---
+#+AUTHOR: Shae Erisson
+#+DATE: 2025-04-25
+
+[[../images/split-keyboards-small.jpg]]
+
+* Split keyboards?
+So you just switched to a split keyboard, you can sort of type again, now what?
+What are some improvements you might enjoy?
+
+* Wait, how do I know if it's an improvement?
+Try it out!
+
+Whenever I make a change to my keyboard layout, I immediately test it with a typing tutor.
+
+I like [[https://monkeytype.com/][monkeytype]], because I can change the input language to "code python", "code haskell", Swedish, etc.
+
+I've also heard good things about [[https://play.typeracer.com/][TypeRacer]] but haven't tried it myself.
+
+I recommend making it easy to change your layout. Then you can explore, and undo if it's not for you.
+* I am not a koala
+Koalas have two thumbs, but I do not!
+
+I blew out my left arm for a year and a half after writing code on an IBM Model M for several years of sixteen hours a day.
+It started with the dreaded "emacs pinky", aka RSI from using your pinky to press control too much.
+
+After my left arm recovered, I realized if something that hurts, stop doing that thing!
+
+So I bought a [[https://kinesis-ergo.com/shop/advantage2/][Kinesis Advantage]], moved all my modifier keys to the thumb clusters, and haven't had the problem since.
+
+That's my first suggestion, if your split keyboard has thumb keys, that's a good place for alt, ctrl, shift, [[https://en.wikipedia.org/wiki/Space-cadet_keyboard#Description][hyper, super]], and altgr.
+* Ergodox EZ and Layers
+Layers are a straightforward extension of the idea that holding down shift gets you capital letters instead of lower case letters.
+
+I wore out five Kinesis Advantage keyboards, and years later bought an early [[https://ergodox-ez.com/][ergodox-ez]].
+
+Kinesis keyboards are large, and I got tired of carrying mine back and forth to work. The ergodox-ez was far more portable.
+
+The ergodox had fewer keys than the kinesis, and I'd already bound all my function keys to [[https://en.wikipedia.org/wiki/The_Humane_Interface#Design_rules][specific uses]] (email, IRC, time clock, etc).
+
+I came up with two additional "layers" and put my function keys on the second layer in place of the matching numbers. So, holding down the layer-1 key and pressing what would be the number 1 sends the key F1.
+
+Random trivia: Did you know letters can be [[https://en.wikipedia.org/wiki/Text_figures][lower case]]?
+* ZSA Moonlander
+I also bought one of the first few [[https://www.zsa.io/moonlander][Moonlander]] keyboards.
+
+While it was fun configuring my ergodox by editing the C source code of the keymap, the moonlander's ability to edit and share keyboard layouts on the web is great for exploring.
+
+I also found it far easier to carry my moonlander in my backpack because it comes with a decent travel case.
+
+The Moonlander was my first exposure to [[https://docs.qmk.fm/features/tap_dance][tap dance]] functionality. The Moonlander web layout editor supports four different inputs, including press and release (tap), press and release twice, press and hold, and tap and then hold.
+
+Check out [[https://configure.zsa.io/moonlander/layouts/QX5qp/latest/0][my Moonlander layout]] or browse many [[https://configure.zsa.io/moonlander/search][public layouts]] for ideas.
+* Layer heuristics
+When do you want a layer?
+
+Many of my friends create a custom layer for qwerty input for web games. For example, Angel has a layout with [[https://configure.zsa.io/moonlander/layouts/0LNJQ/latest/0][six layers]] that includes gaming and Italian layers.
+
+I try to put my most commonly used keys on the primary layer, and push less frequently used keys to deeper layers. I also like to have a layer for media commands like volume controls and skip to the next track.
+* Tap Dance heuristics
+I haven't used these much, because my primary keyboards have lots of keys compared to the latest fashion.
+
+I recently purchased a [[https://peterlyons.com/problog/2024/05/kipra-keyboard/][kipra]], and now I really do need tap dance!
+
+I expect to follow Angel's approach to compress my Ergodox six key thumb clusters into fewer keys. Right now I have backspace and left shift next to each other. If you click on the [[https://configure.zsa.io/moonlander/layouts/0LNJQ/latest/0][bottom leftmost key]] you'll see it's backspace when tapped, and left shift when held.
+* All of your keyboard suggestions are far too sensible! I want CHAOS!
+
+If you use emacs, try [[https://github.com/shapr/markovkeyboard/][markovkeyboard]]?
+* Who bribed you to write this post?
+Oh right! This is my first [[buy-a-blog-post.html][buy a blog post]]
+and was funded by [[https://blog.frodux.org/][Chris]].
