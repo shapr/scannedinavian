@@ -71,5 +71,5 @@ I expect to follow Angel's approach to compress my Ergodox six key thumb cluster
 
 If you use emacs, try [[https://github.com/shapr/markovkeyboard/][markovkeyboard]]?
 * Who bribed you to write this post?
-Oh right! This is my first [[buy-a-blog-post.html][buy a blog post]]
+Oh right! This is my first [[/buy-a-blog-post.html][buy a blog post]]
 and was funded by [[https://blog.frodux.org/][Chris]].
