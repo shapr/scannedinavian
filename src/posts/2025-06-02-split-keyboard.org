@@ -44,7 +44,7 @@ The ergodox had fewer keys than the kinesis, and I'd already bound all my functi
 
 I came up with two additional "layers" and put my function keys on the second layer in place of the matching numbers. So, holding down the layer-1 key and pressing what would be the number 1 sends the key F1.
 
-Random trivia: Did you know letters can be [[https://en.wikipedia.org/wiki/Text_figures][lower case]]?
+Random trivia: Did you know *numbers* can be [[https://en.wikipedia.org/wiki/Text_figures][lower case]]?
 * ZSA Moonlander
 I also bought one of the first few [[https://www.zsa.io/moonlander][Moonlander]] keyboards.
 
