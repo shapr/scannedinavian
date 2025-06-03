@@ -66,8 +66,22 @@ I haven't used these much, because my primary keyboards have lots of keys compar
 
 I recently purchased a [[https://peterlyons.com/problog/2024/05/kipra-keyboard/][kipra]], and now I really do need tap dance!
 
-I expect to follow Angel's approach to compress my Ergodox six key thumb clusters into fewer keys. Right now I have backspace and left shift next to each other. If you click on the [[https://configure.zsa.io/moonlander/layouts/0LNJQ/latest/0][bottom leftmost key]] you'll see it's backspace when tapped, and left shift when held.
+I expect to follow Angel's approach to compress my Ergodox six key
+thumb clusters into fewer keys. Right now I have backspace and left
+shift next to each other. If you click on the [[https://configure.zsa.io/moonlander/layouts/0LNJQ/latest/0][bottom leftmost key]]
+you'll see it's backspace when tapped, and left shift when held.
+* Some layout changes I've tried
+I've been using [[https://en.wikipedia.org/wiki/Dvorak_keyboard_layout][Dvorak]] for decades. I learned the modern US Dvorak,
+but that's not the [[https://en.wikipedia.org/wiki/Dvorak_keyboard_layout#Original_layout][original Dvorak]] layout. I tried the original number
+layout (but not symbols) in their surprising order for a few weeks,
+but went back to Modern Dvorak because I just didn't get much
+benefit. I later replaced the number key row with [[https://www.kaufmann.no/roland/dvorak/][Programmer Dvorak]]
+and that was pleasant for awhile, but yet again, no real benefit. I
+later tried swapping the symbols and numbers on Modern Dvorak, but I
+type the numbers more often than symbols (Haskell).
+
 * All of your keyboard suggestions are far too sensible! I want CHAOS!
+If your goal is to be able to type with as little hand movement as possible, there's the [[https://en.wikipedia.org/wiki/DataHand][DataHand]], and its [[https://github.com/JesusFreke/lalboard][3d printable clone]].
 
 If you use emacs, try [[https://github.com/shapr/markovkeyboard/][markovkeyboard]]?
 * Who bribed you to write this post?
