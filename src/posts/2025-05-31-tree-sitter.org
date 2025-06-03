@@ -62,3 +62,17 @@ From what I've seen, all the above tools focus cool tricks with existing languag
 I heard from [[https://types.pl/@bugarela][bugarela]] that [[https://topiary.tweag.io/book/index.html][Topiary]] uses tree sitter to make language formatters like rust-fmt or gofmt, but for your own custom language. (In this case, bugarela is the lead dev on [[https://quint-lang.org/][Quint]], an updated take on TLA+)
 ** What did I miss?
 If you know of a cool tree sitter related tool that I didn't mention, or especially if you know of research papers comparing the expressive power of ASTs and CSTs, I want to hear about it!
+** Tool replies
+This post started out as a [[https://recurse.social/@shapr/114586871146886956][thread on mastodon]],
+and the published post benefited from a [[https://lobste.rs/s/1qmcac/tools_built_on_tree_sitter_s_concrete][good discussion]] on lobste.rs, where several more tools were linked:
+- sql-diff https://github.com/tobymao/sqlglot/blob/main/posts/sql_diff.md
+- semgrep https://github.com/semgrep/semgrep
+- tbsp https://tangled.sh/@oppi.li/tbsp
+- pdot https://gitlab.com/dmfay/pdot
+- tree-grepper https://github.com/BrianHicks/tree-grepper
+- diffsitter https://github.com/afnanenayet/diffsitter
+- graph-sitter https://github.com/codegen-sh/graph-sitter
+** Honorable mention
+The [[https://github.com/dandavison/delta/][delta]] diff tool does a good enough job that me and a friend thought it must be using syntax trees, but it doesn't!
+It uses [[https://en.wikipedia.org/wiki/Levenshtein_distance][Levenshtein edit distance]]
+to do string [[https://github.com/dandavison/delta/blob/cb610ec4c9cce5e82729f28e44f61197ab4c7132/src/align.rs][alignment]], what a marvelous and elegant approach!

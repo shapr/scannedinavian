@@ -26,29 +26,33 @@ What happens when the money arrives? I'll immediately dump a raw unedited blog p
 
 I reserve the right to change prices after writing any of these blog posts. As time passes I may grow more or less interested in a topic.
 * What topics?
-- [X] A survey of [[https://recurse.social/@shapr/114586871146886956][cool tools]] built on top of tree sitter's concrete syntax trees. ( $15 )
+- [X] A survey of [[https://www.scannedinavian.com/tools-built-on-tree-sitters-concrete-syntax-trees.html][cool tools]] built on top of tree sitter's concrete syntax trees. ( $15 )
+- [X] [[https://www.scannedinavian.com/split-keyboard-tips.html][tips and tricks]] for switching to a split keyboard ( $15 )
+- [ ] purchasing suggestions / heuristics for your first split keyboard ( $15 )
 - [ ] if your tests are hard to write, your API needs improvements, or test driven development is a great way to sanity check your APIs. ( $15 )
-- [ ] the state of affordable input devices for [[https://en.wikipedia.org/wiki/Pose_tracking][pose tracking]] (aka, what happened to the Microsoft Kinect?) ( $50 )
-  - [ ] how pose tracking turns sensor input into human body / hand positions ( $ 500 )
-    - [ ] pose tracking software for analyzing and teaching martial arts ( $50000 )
 - puzzles for learning
   - [ ] [[https://en.wikipedia.org/wiki/A_Mathematician's_Lament][Lockhart's Lament]], or why you should keep a mental collection of small fun puzzles. ( $10 )
   - [ ] Some of the fun mental [[https://github.com/shapr/ako-diagrams][puzzles]] I've discovered after reading Lockhart's Lament ( $30 )
   - [ ] The beauty of [[https://arxiv.org/abs/2403.13855][Brayden Cassella's non-terminating beggar-my-neighbor]], how someone solved one of my collection of fun puzzles, and why it's now even more fun. ( $15 )
 - [ ] Why I believe all programmers should read [[https://press.stripe.com/the-art-of-doing-science-and-engineering][the Hamming book]], [[https://openlibrary.org/books/OL38791133M/Art_and_Fear][Art & Fear]], [[https://en.wikipedia.org/wiki/Structure_and_Interpretation_of_Computer_Programs][SICP]], and [[https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/][The Pragmatic Programmer]]. ( $25 )
+- [ ] the state of affordable input devices for [[https://en.wikipedia.org/wiki/Pose_tracking][pose tracking]] (aka, what happened to the Microsoft Kinect?) ( $50 )
+  - [ ] how pose tracking turns sensor input into human body / hand positions ( $ 500 )
+    - [ ] pose tracking software for analyzing and teaching martial arts ( $50000 )
 - [ ] How I did my taxes in emacs' org-mode spreadsheets ( $20 )
   - [ ] what the accountant thought about me doing my taxes in emacs ( TBD )
-- [ ] A cost comparison of StarLink vs fiber links, where the cost is price per bit over the lifetime of both. ( $50 )
-- [ ] A summary of some papers on the effect of carbon dioxide levels on human cognition ( $35 )
-  - [ ] Is it possible our society has become stupider due to rising global levels of carbon dioxide? ( $30 )
-- [ ] conversations with correctness, why I believe incremental interactive 'proof assistant' tools such as GHCi, [[https://docs.idris-lang.org/en/latest/elaboratorReflection/elaborator-reflection.html][idris]], and [[https://github.com/shapr/hlsexamples/blob/main/src/Examples.hs#L117][wingman]] are superior to large language models for exploratory programming ( $40 )
-- [ ] An analysis of time to converge on maximum coverage for various property based testing frameworks in Haskell. ( $40 )
+- [ ] A cost comparison of StarLink vs fiber links, where the cost is price per bit over the lifetime of both. ( $40 )
+- [ ] A summary of some papers on the effect of carbon dioxide levels on human cognition ( $25 )
+  - [ ] Is it possible our society has become [[https://pmc.ncbi.nlm.nih.gov/articles/PMC7229519/][stupider]] due to rising global levels of carbon dioxide? ( $30 )
+- [ ] conversations with correctness, why I believe incremental interactive 'proof assistant' tools such as GHCi, [[https://docs.idris-lang.org/en/latest/elaboratorReflection/elaborator-reflection.html][idris]], and [[https://github.com/shapr/hlsexamples/blob/main/src/Examples.hs#L117][wingman]] are superior to large language models for exploratory programming ( $35 )
+- [ ] An analysis of time to converge on maximum coverage for various property based testing frameworks in Haskell. ( $35 )
   This is an extension of [[https://www.youtube.com/watch?v=JB7vl9KXqpw][my ICFP lightning talk]] and [[https://www.scannedinavian.com/run-property-tests-until-coverage-stops-increasing.html][earlier blog post]].
-- [ ] A description of "library sommeliers" that I pitched to the Haskell Foundation ( $25 )
+- [ ] A description of "library sommeliers" that I pitched to the Haskell Foundation ( $20 )
   - [ ] A prototype "library sommelier" template with working demos ( $75 )
     - [ ] A language agnostic website for library sommeliers ( $75000 )
-- [ ] notes on a [[https://github.com/yetamrra/spc-compiler][working spoken programming language]] that uses Hindley-Milner type inference to decide what part of speech is being spoken now. ( $15 )
-- [ ] Can you discover an unknown element by predicting and analyzing emission spectra from distant stars? Notes from a discussion on the Recurse Center zulip. ( $30 )
+- [ ] notes on a [[https://github.com/yetamrra/spc-compiler][working spoken programming language]] that uses Hindley-Milner type inference to decide what part of speech is being spoken now. ( $25 )
+- [ ] Can you discover an unknown element by predicting and analyzing emission spectra from distant stars? Notes from a discussion on the Recurse Center zulip. ( $25 )
+- [ ] What's so great about [[https://en.wikipedia.org/wiki/Data_parallelism][data parallelism]]? ( $25 )
+- [ ] Out of Order Execution is the x86 super power, or a short summary of [[https://pharr.org/matt/blog/2018/04/18/ispc-origins][ispc]] ( $30 )
 
 This is about a third of the full list, and includes posts I would immediately feel comfortable writing.
 * What if I want to bribe you to write about a topic that's not on the list?
@@ -63,5 +67,9 @@ Ok, maybe I just made up all the prices anyway.
 * Is this for real?
 🤔
 This could also be an excuse to re-organize my scattered lists of ideas, and find people who want to collaborate.
+
+If you want a blog post, send money to my email address at paypal, with a note describing which post, and I'll get right on it!
+If your payment is less than the amount in the list above, I will update the post with something like ($5 of $40).
+So far latency has averaged 12 hours between request and post online.
 * Conclusion
 Post your own "blog post stub" list on your own blog, and SEND ME A LINK!

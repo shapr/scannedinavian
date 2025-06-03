@@ -70,7 +70,7 @@ I like the [[https://en.wikipedia.org/wiki/Huffman_coding][Huffman coding]] appr
 require more keypresses.
 
 * Tap Dance heuristics
-I haven't used these much, because my primary keyboards have lots of keys compared to the latest fashion.
+I haven't used these much, because my primary keyboards have lots of keys compared to the latest [[https://www.reddit.com/r/ErgoMechKeyboards/][fashion]].
 
 I recently purchased a [[https://peterlyons.com/problog/2024/05/kipra-keyboard/][kipra]], and now I really do need tap dance!
 
@@ -93,5 +93,5 @@ If your goal is to be able to type with as little hand movement as possible, the
 
 If you use emacs, try [[https://github.com/shapr/markovkeyboard/][markovkeyboard]]?
 * Who bribed you to write this post?
-Oh right! This is my first [[/buy-a-blog-post.html][buy a blog post]]
+Oh right! This is my first [[https://www.scannedinavian.com/buy-a-blog-post.html][buy a blog post]]
 and was funded by [[https://blog.frodux.org/][Chris]].
