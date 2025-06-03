@@ -60,7 +60,15 @@ When do you want a layer?
 
 Many of my friends create a custom layer for qwerty input for web games. For example, Angel has a layout with [[https://configure.zsa.io/moonlander/layouts/0LNJQ/latest/0][six layers]] that includes gaming and Italian layers.
 
-I try to put my most commonly used keys on the primary layer, and push less frequently used keys to deeper layers. I also like to have a layer for media commands like volume controls and skip to the next track.
+I try to put my most commonly used keys on the primary layer, and push
+less frequently used keys to deeper layers. I like to have a layer for
+media commands like volume controls and skip to the next track. If the
+keyboard firmware offers mouse movement keys, I try to fit those into
+[[https://configure.zsa.io/moonlander/layouts/QX5qp/b6j67/2][a layer]].
+
+I like the [[https://en.wikipedia.org/wiki/Huffman_coding][Huffman coding]] approach where rarely used keystrokes
+require more keypresses.
+
 * Tap Dance heuristics
 I haven't used these much, because my primary keyboards have lots of keys compared to the latest fashion.
 
@@ -77,7 +85,7 @@ layout (but not symbols) in their surprising order for a few weeks,
 but went back to Modern Dvorak because I just didn't get much
 benefit. I later replaced the number key row with [[https://www.kaufmann.no/roland/dvorak/][Programmer Dvorak]]
 and that was pleasant for awhile, but yet again, no real benefit. I
-later tried swapping the symbols and numbers on Modern Dvorak, but I
+then tried swapping the symbols and numbers on Modern Dvorak, but I
 type the numbers more often than symbols (Haskell).
 
 * All of your keyboard suggestions are far too sensible! I want CHAOS!
