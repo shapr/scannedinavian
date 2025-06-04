@@ -31,7 +31,7 @@ I reserve the right to change prices after writing any of these blog posts. As t
 - [ ] purchasing suggestions / heuristics for your first split keyboard ( $15 )
 - [ ] if your tests are hard to write, your API needs improvements, or test driven development is a great way to sanity check your APIs. ( $15 )
 - puzzles for learning
-  - [ ] [[https://en.wikipedia.org/wiki/A_Mathematician's_Lament][Lockhart's Lament]], or why you should keep a mental collection of small fun puzzles. ( $10 )
+  - [X] [[https://www.scannedinavian.com/lockharts-lament.html][Lockhart's Lament]], or why you should keep a mental collection of small fun puzzles. ( $10 )
   - [ ] Some of the fun mental [[https://github.com/shapr/ako-diagrams][puzzles]] I've discovered after reading Lockhart's Lament ( $30 )
   - [ ] The beauty of [[https://arxiv.org/abs/2403.13855][Brayden Cassella's non-terminating beggar-my-neighbor]], how someone solved one of my collection of fun puzzles, and why it's now even more fun. ( $15 )
 - [ ] Why I believe all programmers should read [[https://press.stripe.com/the-art-of-doing-science-and-engineering][the Hamming book]], [[https://openlibrary.org/books/OL38791133M/Art_and_Fear][Art & Fear]], [[https://en.wikipedia.org/wiki/Structure_and_Interpretation_of_Computer_Programs][SICP]], and [[https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/][The Pragmatic Programmer]]. ( $25 )
