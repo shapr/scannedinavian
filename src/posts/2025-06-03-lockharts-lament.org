@@ -10,7 +10,7 @@ I was sitting in a doctor's waiting room, feeling bored and stuck, and
 I read [[https://profkeithdevlin.org/devlins-angle/2008-posts/#mar08][Lockhart's]] [[https://profkeithdevlin.org/wp-content/uploads/2023/09/lockhartslament.pdf][Lament]].
 
 I thought I read something like "There are fun and exciting puzzles
-everywhere around you!"
+everywhere around you!"[fn:1]
 
 🤔 Could that be true? How would I test that?
 
@@ -62,6 +62,8 @@ Does this arrangement of grooves work for eight sided dice? What about twenty si
 I was then convinced that fun math puzzles really were everywhere!
 I just had to LOOK for them!
 * Notes
+
+
 The creator of those dice I had in my pocket sells another set of dice with an entirely [[https://www.ako-dice.com/product-page/ako-dice-iii][different layout]].
 
 Yes, those images are a picture of my remarkable 2, because I don't know how to create diagrams. If you DO know, please tell me!
@@ -83,3 +85,11 @@ Even better, if you know of an English translation of Schläfli's [[https://arch
 
 * CONCLUSION
 Lockhart is right, fun and exciting puzzles are everywhere, and math is a great way to explore them!
+
+[fn:1] The actual text of what I read is:
+#+begin_quote
+A good problem is something you don’t know how to solve. That’s what
+makes it a good puzzle, and a good opportunity. A good problem does
+not just sit there in isolation, but serves as a springboard to other
+interesting questions.
+#+end_quote
