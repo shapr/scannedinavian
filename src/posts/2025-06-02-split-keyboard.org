@@ -4,7 +4,7 @@ description: You just switched to a split keyboard, now what?
 tags: request, keyboard, bribe
 ---
 #+AUTHOR: Shae Erisson
-#+DATE: 2025-04-25
+#+DATE: 2025-06-02
 
 [[../images/split-keyboards-small.jpg]]
 
