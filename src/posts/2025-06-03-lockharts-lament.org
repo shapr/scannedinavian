@@ -57,7 +57,7 @@ possible four sided dice.
 
 [[../images/tetrahedron-layouts.png]]
 
-Does this arrangement of grooves work for eight sided dice? What about twenty sided dice?
+Does any arrangement of grooves work for eight sided dice? What about twenty sided dice?
 
 I was then convinced that fun math puzzles really were everywhere!
 I just had to LOOK for them!

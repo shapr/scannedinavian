@@ -43,7 +43,7 @@ I reserve the right to change prices after writing any of these blog posts. As t
 - [ ] A cost comparison of StarLink vs fiber links, where the cost is price per bit over the lifetime of both. ( $40 )
 - [ ] A summary of some papers on the effect of carbon dioxide levels on human cognition ( $25 )
   - [ ] Is it possible our society has become [[https://pmc.ncbi.nlm.nih.gov/articles/PMC7229519/][stupider]] due to rising global levels of carbon dioxide? ( $30 )
-- [ ] conversations with correctness, why I believe incremental interactive 'proof assistant' tools such as GHCi, [[https://docs.idris-lang.org/en/latest/elaboratorReflection/elaborator-reflection.html][idris]], and [[https://github.com/shapr/hlsexamples/blob/main/src/Examples.hs#L117][wingman]] are superior to large language models for exploratory programming ( $35 )
+- [ ] conversations with correctness, why I believe incremental interactive 'proof assistant' tools such as GHCi, [[https://docs.idris-lang.org/en/latest/elaboratorReflection/elaborator-reflection.html][idris]], and [[https://github.com/shapr/hlsexamples/blob/main/src/Examples.hs#L117][wingman]] are superior to large language models for exploratory programming ( $55 )
 - [ ] An analysis of time to converge on maximum coverage for various property based testing frameworks in Haskell. ( $35 )
   This is an extension of [[https://www.youtube.com/watch?v=JB7vl9KXqpw][my ICFP lightning talk]] and [[https://www.scannedinavian.com/run-property-tests-until-coverage-stops-increasing.html][earlier blog post]].
 - [ ] A description of "library sommeliers" that I pitched to the Haskell Foundation ( $20 )
