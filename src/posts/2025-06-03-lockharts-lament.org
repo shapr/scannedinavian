@@ -41,7 +41,7 @@ Each groove contributes to the sum of the numbers on each side. Each
 groove crosses an edge between faces. All of the grooves are on
 exactly two faces, except one groove? Why? Could there be a different
 arrangement of grooves where each groove is only on two sides?
-
+* Graph Theory!
 At some point, I realized this was a graph theory problem!
 
 Days later I asked a mathematician friend of mine, and she told me
@@ -68,6 +68,7 @@ Yes, those images are a picture of my remarkable 2, because I don't know how to 
 * BONUS CONTENT
 
 The same mathematician who got me started down this path (graph joke?) also drew alternate layouts for the cube:
+
 [[../images/cube-layouts.png]]
 
 I know you did *NOT* come to this blog post to get a homework assignment, but maybe it's not homework if I don't know the answers?
