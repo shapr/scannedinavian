@@ -44,7 +44,7 @@ I read the examples several times, and finally chose the [[https://github.com/Le
 After much skull sweat, how to express the idea came from [[https://vaibhavsagar.com/][Vaibhav]] saying "Express it as a sum of Integers". That is, a ship can have zero or more of each engine, and each of those integers has a particular value.
 [[https://en.wikipedia.org/wiki/Integer_programming][Integer linear programming]]! SMT solvers are much more general than ILP, but they can also do that, with their usual "can do, but won't be fast" kind of approach.
 
-A bunch of searching around turned up the [[https://rise4fun.com/Z3/tutorialcontent/optimization#h25][z3 optimization tutorial]] which does the same thing, but then says "In this example, the boolean encoding is not really natural."
+A bunch of searching around turned up the [[https://www.philipzucker.com/z3-rise4fun/optimization.html][z3 optimization tutorial]] (look for "integer encoding") which does the same thing, but then says "In this example, the boolean encoding is not really natural."
 They rewrite the problem with a bunch of Integer values, and that's what I want!
 
 * Look, I totally zoned out, can you repeat all that stuff in much smaller words?
@@ -283,7 +283,7 @@ If you want non-interactive input from the helpful Matt Peddie, check out this [
 
 * Appendix: Many helpful comments for the Integer Example In The Z3 Docs
 
-I had a hard time reading the [[https://rise4fun.com/Z3/tutorial/guide][z3 tutorial]] so I've added a bunch of comments to the optimization example that uses integer constraints, in hopes of easing comprehension for YOU should you decide to dig into this subject.
+I had a hard time reading the [[https://www.philipzucker.com/z3-rise4fun/guide.html][z3 tutorial]] so I've added a bunch of comments to the optimization example that uses integer constraints, in hopes of easing comprehension for YOU should you decide to dig into this subject.
 
 #+BEGIN_SRC lisp
   ;; declare a cartesian product of host server and VM
