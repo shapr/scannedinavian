@@ -53,6 +53,9 @@ I reserve the right to change prices after writing any of these blog posts. As t
 - [ ] Can you discover an unknown element by predicting and analyzing emission spectra from distant stars? Notes from a discussion on the Recurse Center zulip. ( $25 )
 - [ ] What's so great about [[https://en.wikipedia.org/wiki/Data_parallelism][data parallelism]]? ( $25 )
 - [ ] Out of Order Execution is the x86 super power, or a short summary of [[https://pharr.org/matt/blog/2018/04/18/ispc-origins][ispc]] ( $30 )
+- [ ] How to put CEO pay back into workers' paychecks? Tiny companies! and
+  - Why employer controlled health insurance discourages creation of small companies.
+  - aka [[https://en.wikipedia.org/wiki/Peter_Drucker][Drucker]] on Jazz Band Sized companies
 
 This is about a third of the full list, and includes posts I would immediately feel comfortable writing.
 * What if I want to bribe you to write about a topic that's not on the list?
