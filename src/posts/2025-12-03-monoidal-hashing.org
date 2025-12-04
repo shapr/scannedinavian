@@ -114,7 +114,7 @@ One benefit to monoidal hashes over content defined chunking is that you get ass
 * next steps
 - [ ] hack it all together
 
-I planed to publish this months ago, but got distracted, so maybe someone else will be inspired to try this before I get back to it?
+I planned to publish this months ago, but got distracted, so maybe someone else will be inspired to try this before I get back to it?
 * Bonus content
 Before I learned about monoidal hashing, I expected [[https://inria.hal.science/hal-02303490/file/paper%20%281%29.pdf][Merkle Search Trees]] to be the best approach.
 

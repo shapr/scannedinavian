@@ -1,0 +1,22 @@
+---
+title: Can you discover unknown elements by calculating their spectra?
+description: physics, astronomy
+tags: physics, astronomy,
+---
+#+AUTHOR: Shae Erisson
+#+DATE: 2025-12-02
+* Can you discover unknown elements by calculating their spectra?
+
+Years ago I had a discussion with [[https://saul.pw/][Saul Pwanson]] about the [[https://en.wikipedia.org/wiki/Island_of_stability#Other_islands_of_stability][islands of stability]] and wondered, can I discover an unknown element by calculating its spectra and pointing a telescope at distant stars?
+
+I asked some smart people I know and they said, 'Yes and...'.
+
+They said I'd need a [[https://en.wikipedia.org/wiki/Basis_set_(chemistry)][basis set]] and a [[https://en.wikipedia.org/wiki/Density_functional_theory][density function]] calibrated for those elements. They also said problem setup would be a large amount of work, and then a very large amount of CPU and memory to answer the problem.
+
+They suggested I also look at the [[https://en.wikipedia.org/wiki/Selection_rule][selection rule]].
+
+A related and disheartening discovery was the furious disagreements in publications titled [[https://scholar.google.com/scholar?q=undecidability+of+the+spectral+gap][Undecidability of the spectral gap]]. What's up with that?
+
+The math is beyond me, I wouldn't even know where to start.
+
+If the math isn't beyond you, try it out and tell me how it goes?
