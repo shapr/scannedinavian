@@ -1,0 +1,127 @@
+---
+title: Monoidal Hashing
+description: Data deduplication with monoidal hashing
+tags: math, hash, monoid, rsync
+---
+#+AUTHOR: Shae Erisson
+#+DATE: 2025-12-03
+
+* The Problem
+Can I beat rsync for both cpu and network costs when a file on the server and client are different?
+That is, can I find the smallest difference between a file on the server and client, and send only the change, like rsync?
+
+As of<2025-12-03 Wed>, I don't know for sure, but I think it's likely.
+* rsync
+Originally, rsync used a sliding window was hashed, moving byte by byte. This was very slow. (but could use many cores/SIMD!)
+
+The naive approach of breaking a file into 8k chunks fails if someone
+adds a single new byte at the beginning.  This is called the *boundary
+shift problem*.
+* Content Defined Chunking
+[[https://en.wikipedia.org/wiki/Rolling_hash#Gear_fingerprint_and_content-based_chunking_algorithm_FastCDC][Content defined chunking]] (CDC) attempts to describe chunks by their content.
+
+The input is incrementally hashed, and a chunk boundary is created
+when the hash satisifies some condition like "ends with two zeros".
+
+You can change the condition to change the average size of the blocks.
+Maybe you create a block boundary when there's only one zero at the end because you want big blocks?
+
+But, CDC still uses expensive re-hashing of the input bytes.
+
+Hash functions with [[https://en.wikipedia.org/wiki/Rolling_hash#Rabin_fingerprint][constant-time "update" operations]] have decreased hashing costs, but CDC hashing is not associative, so you can't use multiple cores!
+
+That is, any change inside the stream will affect at least the boundary of this block and possibly the next block [fn:1].
+
+Most of the research on CDC has worked towards the goal of producing consistently sized chunks roughly within chosen limits.
+
+* Monoid!
+A [[https://en.wikipedia.org/wiki/Monoid][monoid]] is a binary associative operation with an identity.
+
+Binary means the operation takes two inputs and produces one output.
+
+Associative means ~(a * (b * c))~ gives the same result as ~((a * b) * c)~.
+
+Intuitive examples include addition with zero as the identity, and multiplication with one as the identity.
+
+The downside of the those two examples is that addition and
+multiplication are commutative, meaning ~a * b~ is the same as ~b * a~
+but monoids aren't commutative!  Because of that I consider string
+concatenation a better example.
+
+If ~*~ means 'squish two strings together', ~(("Monoids " * "are") * "
+awesome")~ will be the same as ~("Monoids " * ("are" * " awesome"))~
+but you can see that changing the order of the inputs will give you a
+different string.
+
+* Monoidal Hashing
+Enter [[https://github.com/benwr/bromberg_sl2?tab=readme-ov-file#what-is-this-library-for][monoidal hashing]]! My favorite arxiv intro is [fn:2] "Girth of the Cayley graph and Cayley hash functions".
+
+I found a neat [[https://github.com/benwr/bromberg_sl2?tab=readme-ov-file#what-is-this-library-for][rust crate]] that does monoidal hashing, this is from the docs:
+
+#+begin_quote
+This library implements a putatively-strong hash function H with the
+useful property that it gives a monoid homomorphism. This means there
+is a cheap operation ~*~ such that given strings ~s1~ and ~s2~,
+~H(s1 ++ s2)= H(s1) * H(s2).~
+#+end_quote
+
+That means we can choose *any* blocksize we want, use as many cores/SIMD as we want, and it all works!
+
+Cayley hashing is even *bit* level rather than byte level, so can detect bit flips (cosmic rays?).
+
+* Deduplication
+
+But *exactly how* do we use this for deduplication?
+
+A monoidal hash is superior to a [[https://en.wikipedia.org/wiki/Merkle_tree][Merkle Tree]], because you will get a
+different root hash from a Merkle Tree for different block sizes,
+where a monoidal hash will always give the same root hash at any block
+size.
+
+(But Merkle Trees have so far been cryptographically safe, while
+monoidal / Cayley hashing has seen some crypto attacks, see the
+history in [fn:2] "Girth of the Cayley graph and Cayley hash functions")
+
+I think there's some sensible calculation that combines the bandwidth
+delay product between the hosts with the size of the file to give you a sensible chunk size?
+
+But how can you be sure to beat the boundary shift problem?
+
+* Current thoughts
+
+Everyday hash values can only be compared for equality. Monoidal hash values can be mappended together on the other end of the wire.
+
+That means I don't need to send a Merkle Tree root to see if the files are equal, I could send a monoidal hash for each half of the file and the other end could calculate their own root hash.
+
+I could send any number of monoidal hashes with their offsets into the file, and the other end could quickly figure out which parts of the file differ.
+
+We don't send a root hash, we send ingredients for the root hash to the other side.
+Both sides will still build a root hash, but there's no point in sending it!
+
+Right now I strongly suspect a [[https://en.wikipedia.org/wiki/Finger_tree][finger tree]] of monoidal hashes will be faster than rsync's [[https://rsync.samba.org/tech_report/node4.html][two level hash bucket approach]].
+
+I figure both sides semi-randomly choose blocksizes and offsets, then pitch the hashes across the wire, starting with the largest and working down to smaller chunks.
+
+The other end does the same, with some kind of "agreement" message when common chunks are found.
+
+That is, choose an average 'block size', choose a bunch of intervals, and create something roughly equivalent to a Merkle Tree by hashing each of the intervals, and all combinations.
+
+One important thing will be to exchange hashes such that the associative property allows the other side to reassemble some of the pieces.
+
+For example, one side could choose seven byte blocks, the other end could choose five byte blocks, and they'd match up on 35 byte boundaries, if there weren't any insertions or deletions.
+
+One benefit to monoidal hashes over content defined chunking is that you get associativity and you can still use multiple cores to hash file contents.
+* next steps
+- [ ] hack it all together
+
+I planed to publish this months ago, but got distracted, so maybe someone else will be inspired to try this before I get back to it?
+* Bonus content
+Before I learned about monoidal hashing, I expected [[https://inria.hal.science/hal-02303490/file/paper%20%281%29.pdf][Merkle Search Trees]] to be the best approach.
+
+I don't believe that's the case now, but I do plan on using them for building "appendables" to 'diff' encrypted data for a nifty work project!
+
+You'll probably enjoy reading about Merkle Search Trees if you like the ideas around monoidal hashing.
+
+* Footnotes
+[fn:2] [[https://arxiv.org/pdf/2502.13197][Girth of the Cayley graph and Cayley hash functions]]
+[fn:1] [[https://arxiv.org/abs/2409.06066][A Thorough Investigation of Content-Defined Chunking Algorithms for Data Deduplication]]
