@@ -1,0 +1,220 @@
+* org-mode configuration
+#+STARTUP: overview
+#+STARTUP: hidestars
+#+STARTUP: logdone
+#+PROPERTY: Effort_ALL 0:10 0:20 0:30 1:00 2:00 4:00 6:00 8:00
+#+COLUMNS: %38ITEM(Details) %TAGS(Context) %7TODO(To Do) %5Effort(Time){:} %6CLOCKSUM{Total}
+#+TAGS: { WORK(w) HOME(h) } SCHOOL(s) LEARN(l) FUN(f) PROFESSIONAL_DEVELOPMENT(p)
+#+SEQ_TODO: TODO(t) STARTED(s) WAITING(w) APPT(a) | DONE(d) CANCELLED(c) DEFERRED(f)
+* DONE Can you discover unknown elements by calculating their spectra?
+CLOSED: [2025-12-03 Wed 22:23]
+Years ago I had a discussion with [[https://saul.pw/][Saul Pwanson]] about the [[https://en.wikipedia.org/wiki/Island_of_stability#Other_islands_of_stability][islands of stability]] and wondered, can I discover an unknown element by calculating its spectra and pointing a telescope at distant stars?
+
+I asked some smart people I know and they said, 'Yes and...'.
+
+They said I'd need a [[https://en.wikipedia.org/wiki/Basis_set_(chemistry)][basis set]] and a [[https://en.wikipedia.org/wiki/Density_functional_theory][density function]] calibrated for those elements. They also said problem setup would be a large amount of work, and then a very large amount of CPU and memory to answer the problem.
+
+They suggested I also look at the [[https://en.wikipedia.org/wiki/Selection_rule][selection rule]].
+
+A related and disheartening discovery was the furious disagreements in publications titled [[https://scholar.google.com/scholar?q=undecidability+of+the+spectral+gap][Undecidability of the spectral gap]]. What's up with that?
+
+The math is beyond me, I wouldn't even know where to start.
+
+If the math isn't beyond you, try it out and tell me how it goes?
+* unready ideas
+- [ ] What's so great about FORTRAN ? data parallelism! ( $50 )
+- [ ] creatives? are they different people?
+  I thought everyone would create if given the right tools
+  but no
+  I want to be around those who create
+- [ ] How finishing my bachelor's fifteen years into my software dev career helped me defend against ageism. ( $20 )
+- [ ] What I hate about Verilog, and why I believe there's a much better language close to the netlist ( $125 )
+- [ ] an overview of thermal semiconductors ( $95 )
+- [ ] What happened to Romani ( gypsy ) culture and music when the European national borders became less permeable? ( $80 )
+- [ ] notes on a programming language [[https://github.com/shapr/metalogo][designed to be drawn by hand]]. ( $20 )
+- [ ] notes on an audible-only (graphical?) user interface ([[strange prototyp][audio only stereo game demo]]) ( ? )
+- [ ] holonomy puzzles emulating a 3D combination lock or, [[http://www.segerman.org/][Henry Segerman]] designs amazing things. ( $75 )
+- [ ] A summary of Hamming's writings on phase change / inflection points at order of magnitude improvements ( $30 )
+- [ ] How to display test coverage in emacs buffer gutters. ( ? )
+- [ ] The benefits of finding multiple boundaries between success and failure in property based testing ( $35 )
+- [ ] Knowledge uptake in academia by age of citation. This would be something much like [[https://journals.sagepub.com/doi/10.1177/2329496514540131][Sociological Innovation through Subfield Integration]]. ( $ 60 )
+  and was sparked by noticing the surprising age range of citations in Claude Shannon's Information Theory paper.
+- [ ] an overview of production and research [[https://haflang.github.io/][graph reduction hardware]] ( $20 )
+- [ ] graph reduction hardware doesn't need cache coherency, or does it? ( $45 )
+- [ ] Overview of equality saturation, equivalence graphs, and their use in the rust cranelift compiler ( $25 )
+- [ ] Now that we have lsp and treesitter, what are other good editor agnostic chunks?
+- [ ] register renaming, is that the same as boilerplate? swap, dup, etc?
+- [ ] single packet authentication, gets rid of "knock" packets
+- [ ] X Window "malware" that turns everything black
+- [ ] package dependency tree for proglangs, showing where to grab important tickets
+- [ ] group theory for gears, given a container size and input / output locations, generate the gears inside
+- [ ] survey of bloom filter research
+  https://news.ycombinator.com/item?id=32186203
+  https://news.ycombinator.com/item?id=43866001
+  https://dl.acm.org/doi/10.1145/3651890.3672219
+  - ribbon filter https://engineering.fb.com/2021/07/09/core-infra/ribbon-filter/
+- [ ] perceptual hashing to auto-skip intros in VLC, look for the same frames near the start and end?
+- [ ] ADHD prescription latency simulator
+* meh ideas
+- [ ] age of music played over time in grocery stores? Is our society ossifying?
+* posts to record the things I repeat ad nauseam in person
+* conversations with correctness
+swan: model checking?
+rules around exploration
+cardinality reduction
+
+tools:
+- idris elaborator https://docs.idris-lang.org/en/latest/elaboratorReflection/elaborator-reflection.html
+- haskell
+  - wingman (where I have the most familiarity)
+  - GHCi with type holes
+- Agda
+- other proof assistants?
+* ADHD prescription latency simulator
+- meds refill countdown timer starts either when you pick up meds (or is it when the prescription is filled?)
+  You cannot get another refill until the countdown has ended.
+  If your prescription is out of stock for a week, the countdown does not start.
+- meds can only be filled at the pharmacy where they were sent.
+  If what you need is out of stock, you can't just call pharmacies to find where it is in stock (I don't know why). I usually have to visit different pharmacy chains in person to ask if a nearby branch has what I need in stock.
+  Once you find a place where meds are in stock, you need to contact your prescriber and ask them to move your prescription to another location.
+- At least in Massachusetts, generic and name brand medications are not considered equivalent unless your prescriber has added an explicit note that says that.
+  Thus if your generic meds are not in stock, but you're willing to pay more, you usually need to get an entirely new prescription.
+- You must get a new prescription from your prescriber every month, this requires having executive function. If nothing else, you must check a box on a website.
+  - if you get lucky, the intersection of your prescriber and state may allow two or three month prescriptions.
+    The national limit is three months, but US states like Massachusetts only allow two months at a time. Since 1999, I've had three month prescriptions roughly 10% of the time.
+- Anecdotally, prescribers do not respond on weekends, holidays, or on the last half of Friday (I don't hold this against them, they already have too much to do).
+- the FDA sets a national maximum for various ADHD meds, if the nation consumes more than that amount before the end of the year, you get to convince your prescriber to change to a different medication.
+- prescribers do not get any feedback about whether a prescription was filled or not
+- some pharmacies are only open for pickup during normal business hours, and you might have to work during that time.
+- prescribers are suspicious of new patients, which adds an extra organizational cost to moving.
+- pharmacies are suspicious of new prescriptions (by branch and pharmacist), which is an extra cost for moving, or for using a pharmacy chain that doesn't already have your historical prescriptions.
+- I must have meds to keep a job, otherwise I forget to show up for work.
+How do I make this?
+You have been diagnosed with ADHD. Your doctor sends an electronic prescription to a nearby pharmacy.
+You visit the pharmacy, and your meds are out of stock.
+* build your own rsync (or other utility)
+what tools could I use?
+- [ ] content defined chunking?
+- [ ] rolling hash?
+- [ ] does zfs store a hash of the data? could there be a zfs specific rsync?
+- [ ] what's the problem?
+  If there's a subset of matching data on one end, I want to send a minimal diff to update the chosen side.
+  1. how to detect matching subsets?
+  2. how to send the diff?
+* TODO privacy AND abuse prevention
+SCHEDULED: <2025-09-23 Tue>
+I get paid to work on magic wormhole, yay!
+We want our users to remain private, yay!
+
+Some people abuse the relay server used when direct connections can't be made through Network Address Translation, boo!
+
+How could we keep anonymized logs and still prevent abuse?
+
+I reached for one of my favorite data structures, bloom filters!
+
+My initial inspiration was that I can put the bandwidth use for each IP into a bloom filter, and probabilistically [[https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#Nonstandard_codes][420]] connections.
+
+How can I keep track of usage and resume when that one user stops monopolizing the bandwidth?
+
+I figured I'd create a bloom filter for each fifteen minute period, and [[https://en.wikipedia.org/wiki/Monoid][squish]] them together to get the bandwidth use for this half hour.
+
+Why does that work?
+
+A bloom filter turns on a bunch of bits. I can check two bloom filters by doing OR on all their bits!
+* serialization formats
+- [ ] variable length encodings are common
+- [ ] on the other hand, length prefixed can lead to security problems if malloc is involved
+* bloom filters for visual layout
+
+I'm probably the only user of my "bloom filters for visual layout" process status tool[1], but today I switched to the rust rewrite[2] by @mclare and now I'm converting it to a 64x64 RGB matrix.
+
+[1] https://github.com/shapr/bloohm?tab=readme-ov-file#what-does-it-look-like
+[2]
+* DONE monoidal hashing for data deduplication
+CLOSED: [2025-12-03 Wed 22:23]
+
+problem: find the smallest diff between a file on the server and client, so you can send only the change. rsync does this!
+
+Decades ago, a sliding window was hashed, moving byte by byte. This was very slow. (but can use many cores!)
+
+The naive approach of comparing 8k chunks fails if someone added a single new byte at the beginning.
+This is called the *boundary shift problem*.
+
+Content defined chunking (CDC) attempts to describe chunks by their content,
+creating a chunk boundary when the hash satisifies a condition like
+"ends with two zeros".
+
+CDC still uses expensive re-hashing of the input bytes!
+Hash functions with incremental "updated" operations decreased hashing costs.
+But CDC hashing is not associative, you can't use multiple cores!
+That is, the boundaries of previous blocks affect the current state of the algorithm [fn:1].
+
+Most of the research on CDC has the goal of producing consistently sized chunks roughly within chosen limits.
+(CDC relates to Merkle Trees, Merkle Search Trees, and more that doesn't fit into five minutes)
+
+Enter [[https://github.com/benwr/bromberg_sl2?tab=readme-ov-file#what-is-this-library-for][monoidal hashing]]! (my fav arxiv intro is [fn:2] )
+
+#+begin_quote
+This library implements a putatively-strong hash function H with the
+useful property that it gives a monoid homomorphism. This means there
+is a cheap operation ~*~ such that given strings ~s1~ and ~s2~,
+~H(s1 ++ s2)= H(s1) * H(s2).~
+#+end_quote
+
+That means we can choose *any* blocksize we want, use as many cores/SIMD as we want, and it all works!
+
+Cayley hashing is even *bit* level rather than byte level, so can detect bit insertions!
+
+But *exactly how* do we use this for deduplication?
+Merkle Trees are immediately subsumed (if no more crypto attacks are found, see the history in [fn:2] )
+
+I think there's some sensible calculation that combines the bandwidth
+delay product between the hosts with the size of the file.
+
+How can you be sure to beat the boundary shift problem?
+
+- current inspiration:
+  randomly choose blocksizes and offsets, then pitch the hashes across the wire, starting with the largest.
+  the other end does the same, with some kind of "agreement" message when common chunks are found.
+  (probably calculate intervals to do minimum work)
+
+
+outstanding questions:
+- [ ] exactly *how cheap* is the mappend operation? What's the cost tradeoff?
+
+* merkle trees and descendants
+:LOGBOOK:
+CLOCK: [2025-10-03 Fri 12:40]--[2025-10-03 Fri 14:55] =>  2:15
+:END:
+Why should you care?
+Let me show you how Merkle Search Trees are great for mastodon and bluesky!
+
+- merkle tree
+  boss asked for random writes on our encrypted merkle tree,  Yes and ...
+  how to re-use most of the structure when changes happen?
+  How would I record changes to one leaf node?
+  - convert a leaf node into an intermediate node?
+    this must be recursive somehow?
+  - leaf nodes of different sizes?
+    how to handle variable sized nodes? What criteria for breaking up a node?
+    Oh hey, I've heard about ~content defined chunking~ would that work?
+  - I got stuck here and gave up
+    a few days later I found [[https://www.dolthub.com/blog/2025-07-03-regarding-prollyferation/][prolly trees]] and [[https://inria.hal.science/hal-02303490/document][merkle search trees]], which are (exactly?) the thing I was trying to discover!
+- mst / prolly tree
+  - [[https://en.wikipedia.org/wiki/Rolling_hash#Gear_fingerprint_and_content-based_chunking_algorithm_FastCDC][content defined chunking]] produces variable (but consistent on each run) sized chunks
+    (content defined chunking summary: hash hash hash, if this hash ends in 000, it's a content boundary, start a new chunk)
+  - hash all the resulting chunks
+  - create a wide tree *of the hashes of the chunks*
+  - build a merkle tree of that wide tree, the root hash is "all the content I have so far"
+  - how to use this for a CRDT?
+    - recv root hash from peer, match means we have identical content
+    - doesn't match?
+      ask that peer for their MST, compare against local store of blocks, ask that peer for missing blocks
+
+- [ ] workshop means writing code? YES!
+- [ ] one file in common that everyone can try out
+- [ ] then everyone exchanges their own file with others
+  swap file, root hash, and block size
+* Footnotes
+[fn:2] [[https://arxiv.org/pdf/2502.13197][Girth of the Cayley graph and Cayley hash functions]]
+[fn:1] [[https://arxiv.org/abs/2409.06066][A Thorough Investigation of Content-Defined Chunking Algorithms for Data Deduplication]]

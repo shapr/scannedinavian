@@ -1,0 +1,13 @@
+What's does it mean to native build something for Linux?
+
+CPUs have hardware support for some things, making those tasks much faster when the new instructions are used.
+
+One example is encryption with the new extended instructions.
+
+How to native build for NixOS?
+
+First you add support in the configuration.nix and apply that, then you build for that target.
+ https://discourse.nixos.org/t/gccarch-skylake-is-required-to-build/61688
+
+So far I've been able to build native kernels for skylake and skylake-avx512.
+But how do I test the performance of these kernels vs i686?

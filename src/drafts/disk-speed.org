@@ -1,0 +1,52 @@
+My 2024 laptop (i9-13950HX) has two PCIe4 Samsung 990 Pro 4TB drives.
+My 2025 server (AMD EPYC 4564P) has a PCIe5 Samsung 9100 Pro 8 TB root drive.
+My 2026 laptop (Intel Core Ultra 9 285HX) has a PCIe5 Samsung 9100 Pro 8 TB root drive.
+
+What's faster?
+
+But wait, there's a twist!
+On the laptops I'm also testing with powerprofilesctl set
+
+#+begin_src sh
+  , fio --name=read_throughput --directory=. --numjobs=16 \
+  --size=10G --time_based --runtime=5m --ramp_time=2s --ioengine=libaio \
+  --direct=1 --verify=0 --bs=1M --iodepth=64 --rw=read \
+  --group_reporting=1 \
+  --iodepth_batch_submit=64 --iodepth_batch_complete_max=64
+#+end_src
+
+- amaguq
+  - Intel Core Ultra 9 285HX
+  - PCIe5 Samsung 9100 Pro 8 TB root drive.
+  powerprofilesctl setting:
+  - power-save
+    #+begin_src fundamental
+      Run status group 0 (all jobs):
+         READ: bw=9258MiB/s (9707MB/s), 9258MiB/s-9258MiB/s (9707MB/s-9707MB/s), io=2713GiB (2913GB), run=300104-300104msec
+
+      Disk stats (read/write):
+        nvme1n1: ios=5600761/1290, sectors=5735179264/67960, merge=0/1624, ticks=616154380/97940, in_queue=616273001, util=82.31%
+    #+end_src
+  - balanced
+    #+begin_src fundamental
+      Run status group 0 (all jobs):
+         READ: bw=8455MiB/s (8865MB/s), 8455MiB/s-8455MiB/s (8865MB/s-8865MB/s), io=2478GiB (2661GB), run=300162-300162msec
+
+      Disk stats (read/write):
+        nvme1n1: ios=5117321/1201, sectors=5240136704/76888, merge=0/1596, ticks=616185789/121475, in_queue=616331754, util=85.31%
+    #+end_src
+  - performance
+    #+begin_src fundamental
+      Run status group 0 (all jobs):
+         READ: bw=8970MiB/s (9405MB/s), 8970MiB/s-8970MiB/s (9405MB/s-9405MB/s), io=2629GiB (2823GB), run=300162-300162msec
+
+      Disk stats (read/write):
+        nvme1n1: ios=5427609/1324, sectors=5557871616/68072, merge=0/1772, ticks=616324339/96327, in_queue=616440750, util=89.31%
+    #+end_src
+- ymir
+  - i9-13950HX
+  - PCIe4 Samsung 990 Pro 4TB
+  powerprofilesctl setting
+  - power-save
+  - balanced
+  - performance

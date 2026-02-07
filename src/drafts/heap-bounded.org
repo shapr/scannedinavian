@@ -1,0 +1,21 @@
+* Alacrity
+Brian Warner has this idea of "alacrity".
+He uses it to describe how much encrypted data and request/responses must be accumulated to get the first few decrypted plaintext bytes.
+
+We took that idea to mean explicit per block control would be good.
+We wanted to be sure that we could cryde (crypt+decrypt) files larger than the amount of memory.
+We came up with the idea of "explicit heap-bounded work".
+Our code in magic-cap does block by block work.
+The opposite idea:
+what about mmap?
+does that work on windows and mac? mmap does work on mac
+windows has create_file_mapping and map_view_file
+Python has mmap, rust has memmap2 or lightweight mmap
+
+Could we skip all the careful manual flow and just use mmap?
+
+There are cases where this DOES NOT WORK AT ALL!
+
+For example, serialization formats!
+We're writing what I call an "encrypted only zip file".
+If it contains many conference videos, how much of the file must be read to find any one video?
