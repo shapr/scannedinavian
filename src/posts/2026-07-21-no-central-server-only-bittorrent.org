@@ -1,0 +1,39 @@
+---
+title: No central server, only BitTorrent
+description: You don't need a central server if you meet your peers on the Distributed Hash Table
+tags: peer to peer, distributed hash table, gossip protocol
+---
+#+AUTHOR: Shae Erisson
+#+DATE: 2026-07-21
+* WHAT?
+How do two nodes on the internet discover each other without each other's addressing information?
+
+If they have one piece of information in common, like a server address, they can both connect to that.
+
+What if they have a few words in common?
+
+In that case, you can meet on the BitTorrent Distributed Hash Table.
+* How did you find this?
+I get paid to maintain [[https://github.com/magic-wormhole/magic-wormhole][Magic Wormhole]]. One of its reasonable criticisms is that there's a central server baked into every client, that can go offline.
+
+I also get paid to build a [[https://magic-cap.readthedocs.io/en/latest/][user facing encryption tool]]. While investigating supporting technologies for that, I happened upon [[https://github.com/pubky/pkarr][pkarr]].
+
+With pkarr, instead of two parties knowing about the same central server by DNS name or IP address, you can agree on a passphrase and meet up on the BitTorrent Distributed Hash Table.
+* How's that different from having a central server?
+Ok, it's not so different, but you have suddenly factored out a big chunk of thinking.
+
+The BitTorrent DHT has been around for fifteen years or so, and usually has more than ten million nodes online.
+* Can I use this right now?
+Yes, read the [[https://github.com/pubky/pkarr#key-points][key points]] for pkarr.
+
+Install the library, start contacting other nodes. Until you need NAT
+traversal. At that point, the easiest approach is to use iroh, as
+described in the [[https://www.iroh.computer/blog/the-road-to-iroh-1-0][road to iroh 1.0]] blog post.
+* Future Work
+Right now Magic Wormhole requires [[https://magic-wormhole.readthedocs.io/en/latest/welcome.html#relays][two servers]], a mailbox server and a relay server.
+
+If we switched to pkarr, the mailbox server wouldn't be needed. We might also be able to use a STUN or TURN server instead of the relay server.
+
+No more magic wormhole infrastructure, with all the functionality?
+* Credit
+Much of this blog post came from discussions with [[https://meejah.ca/][meejah]], the /real/ Magic Wormhole maintainer. I'm just the backup maintainer!
