@@ -1,39 +1,46 @@
 ---
 title: No central server, only BitTorrent
-description: You don't need a central server if you meet your peers on the Distributed Hash Table
+description: BEP 44 - store 1000 bytes on the BitTorrent distributed hash table
 tags: peer to peer, distributed hash table, gossip protocol
 ---
 #+AUTHOR: Shae Erisson
 #+DATE: 2026-07-21
 * WHAT?
-How do two nodes on the internet discover each other without each other's addressing information?
+How do two nodes on the internet communicate without each other's addressing information?
 
-If they have one piece of information in common, like a server address, they can both connect to that.
+If there's one piece of information in common, like a server address, both nodes can connect to that.
 
-What if they have a few words in common?
+What if there's only a phrase in common?
 
-In that case, you can meet on the BitTorrent Distributed Hash Table.
-* How did you find this?
-I get paid to maintain [[https://github.com/magic-wormhole/magic-wormhole][Magic Wormhole]]. One of its reasonable criticisms is that there's a central server baked into every client, that can go offline.
+In that case, both nodes could convert the phrase into an address from the on BitTorrent's [[https://en.wikipedia.org/wiki/Mainline_DHT][Mainline]] [[https://en.wikipedia.org/wiki/Distributed_hash_table][Distributed Hash Table]] and share content that way.
+* What's a Distributed Hash Table?
+A Distributed Hash Table (DHT) is a key value store with subpieces stored on different computers.
+Originally you could only find a torrent from a tracker website.
+The DHT was created so a client could find the torrent from the hash of the torrent, no web servers required!
 
-I also get paid to build a [[https://magic-cap.readthedocs.io/en/latest/][user facing encryption tool]]. While investigating supporting technologies for that, I happened upon [[https://github.com/pubky/pkarr][pkarr]].
+This was successful, the BitTorrent Mainline DHT has been up for about
+fifteen years and at any given moment has more than ten million nodes
+online holding subchunks of the entire key value store.
+* Who's doing this?
+I've only seen two projects storing data on the DHT where the data is not related to torrents.
 
-With pkarr, instead of two parties knowing about the same central server by DNS name or IP address, you can agree on a passphrase and meet up on the BitTorrent Distributed Hash Table.
-* How's that different from having a central server?
-Ok, it's not so different, but you have suddenly factored out a big chunk of thinking.
+One is [[https://github.com/pubky/pkarr][pkarr]] (public key address something something). You create a public/private keypair and the public key becomes your DNS name.
 
-The BitTorrent DHT has been around for fifteen years or so, and usually has more than ten million nodes online.
+The other I found is [[https://github.com/rustonbsd/distributed-topic-tracker][distributed-topic-tracker]]. I have a fun project
+that uses [[https://www.iroh.computer/][iroh.computer]]. I wanted nodes to join a [[https://en.wikipedia.org/wiki/Gossip_protocol][gossip group]] from a
+passphrase. Iroh supports [[https://docs.iroh.computer/connecting/gossip][gossip]], but you must know the address of
+another node.
+
+After much digging, I found [[https://github.com/rustonbsd/distributed-topic-tracker/blob/main/PROTOCOL.md][distributed-topic-tracker]] that extends iroh to do the same thing pkarr does.
+* Extra spiffy details
+How do you publish data on the DHT in such a way that no one else can overwrite it?
+
+Distributed Topic Tracker has a [[https://github.com/rustonbsd/distributed-topic-tracker/blob/main/PROTOCOL.md][PROTOCOL]] document with *piles* of details that you may enjoy.
+
+Both of these tools rely on [[https://www.bittorrent.org/beps/bep_0044.html][BEP44]] from 2014. That means you can store a max of ~1000 bytes on the DHT.
 * Can I use this right now?
 Yes, read the [[https://github.com/pubky/pkarr#key-points][key points]] for pkarr.
 
 Install the library, start contacting other nodes. Until you need NAT
 traversal. At that point, the easiest approach is to use iroh, as
 described in the [[https://www.iroh.computer/blog/the-road-to-iroh-1-0][road to iroh 1.0]] blog post.
-* Future Work
-Right now Magic Wormhole requires [[https://magic-wormhole.readthedocs.io/en/latest/welcome.html#relays][two servers]], a mailbox server and a relay server.
-
-If we switched to pkarr, the mailbox server wouldn't be needed. We might also be able to use a STUN or TURN server instead of the relay server.
-
-No more magic wormhole infrastructure, with all the functionality?
-* Credit
-Much of this blog post came from discussions with [[https://meejah.ca/][meejah]], the /real/ Magic Wormhole maintainer. I'm just the backup maintainer!
