@@ -12,7 +12,7 @@ If there's one piece of information in common, like a server address, both nodes
 
 What if there's only a phrase in common?
 
-In that case, both nodes could convert the phrase into an address from the on BitTorrent's [[https://en.wikipedia.org/wiki/Mainline_DHT][Mainline]] [[https://en.wikipedia.org/wiki/Distributed_hash_table][Distributed Hash Table]] and share content that way.
+In that case, both nodes could convert the phrase into an address on BitTorrent's [[https://en.wikipedia.org/wiki/Mainline_DHT][Mainline]] [[https://en.wikipedia.org/wiki/Distributed_hash_table][Distributed Hash Table]] and share content that way.
 * What's a Distributed Hash Table?
 A Distributed Hash Table (DHT) is a key value store with subpieces stored on different computers.
 Originally you could only find a torrent from a tracker website.
@@ -26,12 +26,14 @@ I've only seen two projects storing data on the DHT where the data is not relate
 
 One is [[https://github.com/pubky/pkarr][pkarr]] (public key address something something). You create a public/private keypair and the public key becomes your DNS name.
 
-The other I found is [[https://github.com/rustonbsd/distributed-topic-tracker][distributed-topic-tracker]]. I have a fun project
-that uses [[https://www.iroh.computer/][iroh.computer]]. I wanted nodes to join a [[https://en.wikipedia.org/wiki/Gossip_protocol][gossip group]] from a
-passphrase. Iroh supports [[https://docs.iroh.computer/connecting/gossip][gossip]], but you must know the address of
-another node.
+Second, I have a fun project that uses [[https://www.iroh.computer/][iroh.computer]]. I wanted nodes
+to join a [[https://en.wikipedia.org/wiki/Gossip_protocol][gossip group]] from a passphrase. Iroh supports [[https://docs.iroh.computer/connecting/gossip][gossip]], but
+you must know the address of another node to join the gossip group.
 
-After much digging, I found [[https://github.com/rustonbsd/distributed-topic-tracker/blob/main/PROTOCOL.md][distributed-topic-tracker]] that extends iroh to do the same thing pkarr does.
+After much digging, I found an iroh extension,
+[[https://github.com/rustonbsd/distributed-topic-tracker/blob/main/PROTOCOL.md][distributed-topic-tracker]], that calculates a DHT bucket address from a
+passphrase, and now my computers can quickly connect to each other
+with only a pass phrase in common!
 * Extra spiffy details
 How do you publish data on the DHT in such a way that no one else can overwrite it?
 
